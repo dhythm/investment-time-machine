@@ -37,14 +37,14 @@ const INDICES = [
   },
   {
     id: 'topix',
-    symbol: '1306.T',
+    symbol: '1305.T',
     name: 'TOPIX（連動ETFで代替）',
-    nameEn: 'TOPIX (via ETF 1306)',
+    nameEn: 'TOPIX (via ETF 1305)',
     currency: 'JPY',
     notes: [
-      'TOPIX指数そのものの無料月次データが取得できないため、TOPIX連動ETF「NEXT FUNDS TOPIX連動型上場投信（1306）」の市場価格で代替',
+      'TOPIX指数そのものの無料月次データが取得できないため、TOPIX連動ETF「ダイワ上場投信-TOPIX（1305）」の市場価格で代替（1306は分割で価格系列が不連続だったため1305を採用）',
       'ETFの価格ベース（分配金を含まない）。信託報酬等の影響を受けうる',
-      'データは2008年12月以降（Yahoo Finance で取得可能な範囲）',
+      'データは2007年12月以降（Yahoo Finance で取得可能な範囲）',
     ],
   },
   {
@@ -88,13 +88,22 @@ for (const idx of INDICES) {
   if (!result) throw new Error(`${idx.id}: no result`)
   const ts = result.timestamp ?? []
   const quote = result.indicators?.quote?.[0] ?? {}
+  const adj = result.indicators?.adjclose?.[0]?.adjclose ?? []
 
   const points = []
   for (let i = 0; i < ts.length; i++) {
     const d = new Date(ts[i] * 1000)
     const month = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
-    const buy = quote.open?.[i]
-    const close = quote.close?.[i]
+    let buy = quote.open?.[i]
+    let close = quote.close?.[i]
+    if (idx.adjusted) {
+      // 調整後価格: close は adjclose、buy は同月の調整比率を始値に掛けて求める
+      const a = adj[i]
+      if (buy != null && close != null && a != null && close > 0) {
+        buy = buy * (a / close)
+        close = a
+      }
+    }
     if (month >= currentMonth) continue
     if (buy == null || close == null || buy <= 0 || close <= 0) continue
     points.push({ month, buy: round(buy), close: round(close) })
@@ -115,7 +124,8 @@ for (const idx of INDICES) {
 }
 
 // ドル円レート: FRED DEXJPUS（日次、円/ドル、ニューヨーク正午買いレート）を月次集計
-{
+// FRED が応答しない場合は既存の usdjpy.json を保持して続行する
+try {
   const url = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXJPUS&cosd=1985-01-01&coed=2026-12-31'
   // FRED は Node の fetch ではタイムアウトするため curl で取得する（2026-11 時点）
   const { execFile } = await import('node:child_process')
@@ -158,4 +168,6 @@ for (const idx of INDICES) {
     ],
     points,
   })
+} catch (error) {
+  console.warn(`usdjpy: fetch failed (${error.message}); keeping existing src/data/usdjpy.json`)
 }
