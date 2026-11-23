@@ -1,12 +1,13 @@
 // 月次データセット生成スクリプト
-// Yahoo Finance の chart API（無料・キー不要）から月次バーを取得し、
-// src/data/<id>.json を生成する。実行: node scripts/fetch-data.mjs
+// 無料・キー不要の公開ソースから月次バーを取得し、src/data/*.json を生成する。
+// 実行: node scripts/fetch-data.mjs
 //
-// Stooq の CSV は 2026-11 時点でブラウザ検証（JSチャレンジ）が必須となり
-// スクリプトから取得できないため、代替の無料公開ソースとして Yahoo Finance を使う。
+// 指数: Yahoo Finance の chart API（Stooq の CSV は 2026-11 時点でブラウザ検証が
+// 必須となりスクリプトから取得できないため代替として使用）
+// 為替（ドル円）: FRED（Federal Reserve Economic Data）の DEXJPUS 日次CSVを月次集計
 //
 // 各月の buy = 月初（最初の営業日）の始値、close = 月末（最後の営業日）の終値。
-// 当月（未確定）分は除外する。価格指数（配当を含まない）。
+// 当月（未確定）分は除外する。いずれも価格ベース（配当・分配金を含まない）。
 
 import { writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -23,7 +24,7 @@ const INDICES = [
     currency: 'USD',
     notes: [
       '価格指数（配当を含まない）',
-      '米ドル建て指数。シミュレーションでは為替変動を考慮せず、積立額（円）をそのまま購入に充てる為替中立の計算とする',
+      '米ドル建て指数。円建てモードではドル円レート（FRED DEXJPUS）で換算する',
     ],
   },
   {
@@ -34,11 +35,46 @@ const INDICES = [
     currency: 'JPY',
     notes: ['価格指数（配当を含まない）', '円建て指数'],
   },
+  {
+    id: 'topix',
+    symbol: '1306.T',
+    name: 'TOPIX（連動ETFで代替）',
+    nameEn: 'TOPIX (via ETF 1306)',
+    currency: 'JPY',
+    notes: [
+      'TOPIX指数そのものの無料月次データが取得できないため、TOPIX連動ETF「NEXT FUNDS TOPIX連動型上場投信（1306）」の市場価格で代替',
+      'ETFの価格ベース（分配金を含まない）。信託報酬等の影響を受けうる',
+      'データは2008年12月以降（Yahoo Finance で取得可能な範囲）',
+    ],
+  },
+  {
+    id: 'acwi',
+    symbol: 'ACWI',
+    name: '全世界株式（MSCI ACWI連動ETF）',
+    nameEn: 'MSCI ACWI (via iShares ACWI ETF)',
+    currency: 'USD',
+    notes: [
+      'MSCIワールド（先進国のみ）ではなく、新興国を含むMSCI ACWIに連動するETF「iShares MSCI ACWI ETF」の価格で代替',
+      'ETFの価格ベース（分配金を含まない）。米ドル建て。円建てモードではドル円レート（FRED DEXJPUS）で換算する',
+      'データは2008年3月以降（ETF設定来）',
+    ],
+  },
 ]
 
 const now = new Date()
 const currentMonth = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}`
 const retrievedAt = now.toISOString().slice(0, 10)
+
+function round(v) {
+  return Math.round(v * 100) / 100
+}
+
+function save(data) {
+  const out = join(root, 'src', 'data', `${data.id}.json`)
+  writeFileSync(out, JSON.stringify(data, null, 2) + '\n')
+  const p = data.points
+  console.log(`${data.id}: ${p.length} months, ${p[0].month} .. ${p[p.length - 1].month} -> ${out}`)
+}
 
 for (const idx of INDICES) {
   const period2 = Math.floor(now.getTime() / 1000) + 86400
@@ -59,13 +95,13 @@ for (const idx of INDICES) {
     const month = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`
     const buy = quote.open?.[i]
     const close = quote.close?.[i]
-    if (month >= currentMonth) continue // 当月は未確定のため除外
+    if (month >= currentMonth) continue
     if (buy == null || close == null || buy <= 0 || close <= 0) continue
     points.push({ month, buy: round(buy), close: round(close) })
   }
   points.sort((a, b) => a.month.localeCompare(b.month))
 
-  const data = {
+  save({
     id: idx.id,
     name: idx.name,
     nameEn: idx.nameEn,
@@ -75,14 +111,51 @@ for (const idx of INDICES) {
     retrievedAt,
     notes: idx.notes,
     points,
-  }
-  const out = join(root, 'src', 'data', `${idx.id}.json`)
-  writeFileSync(out, JSON.stringify(data, null, 2) + '\n')
-  console.log(
-    `${idx.id}: ${points.length} months, ${points[0].month} .. ${points[points.length - 1].month} -> ${out}`,
-  )
+  })
 }
 
-function round(v) {
-  return Math.round(v * 100) / 100
+// ドル円レート: FRED DEXJPUS（日次、円/ドル、ニューヨーク正午買いレート）を月次集計
+{
+  const url = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXJPUS&cosd=1985-01-01&coed=2026-12-31'
+  // FRED は Node の fetch ではタイムアウトするため curl で取得する（2026-11 時点）
+  const { execFile } = await import('node:child_process')
+  const { promisify } = await import('node:util')
+  const { stdout: text } = await promisify(execFile)('curl', [
+    '-s',
+    '--max-time',
+    '50',
+    '-A',
+    'Mozilla/5.0',
+    url,
+  ])
+  if (!text.startsWith('observation_date')) throw new Error('usdjpy: unexpected FRED response')
+  const byMonth = new Map()
+  for (const line of text.trim().split('\n').slice(1)) {
+    const [date, raw] = line.split(',')
+    const rate = Number(raw)
+    if (!date || !Number.isFinite(rate) || rate <= 0) continue
+    const month = date.slice(0, 7)
+    if (month >= currentMonth) continue
+    const entry = byMonth.get(month) ?? { buy: rate, close: rate }
+    entry.close = rate
+    byMonth.set(month, entry)
+  }
+  const points = [...byMonth.entries()]
+    .map(([month, v]) => ({ month, buy: round(v.buy), close: round(v.close) }))
+    .sort((a, b) => a.month.localeCompare(b.month))
+
+  save({
+    id: 'usdjpy',
+    name: 'ドル円レート',
+    nameEn: 'USD/JPY',
+    currency: 'JPY',
+    source: 'FRED (Federal Reserve Economic Data), DEXJPUS',
+    sourceUrl: 'https://fred.stlouisfed.org/series/DEXJPUS',
+    retrievedAt,
+    notes: [
+      '米ドル/円の正午買いレート（日次）を月次集計：buy=月初のレート、close=月末のレート',
+      '円建てモードの換算に使用（購入時は buy、評価時は close で換算）',
+    ],
+    points,
+  })
 }
