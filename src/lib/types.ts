@@ -1,3 +1,5 @@
+export type FxMode = 'neutral' | 'jpy'
+
 export interface MonthlyPoint {
   month: string
   buy: number | null
