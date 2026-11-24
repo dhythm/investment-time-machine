@@ -4,15 +4,19 @@ import { clamp, yearRange, type FxMode, type IndexDataset, type MonthlyPoint } f
 interface MultiOptions { startYear: number; monthlyAmount: number; fxMode: FxMode; fxPoints: MonthlyPoint[] }
 
 export function simulateAll(selected: IndexDataset[], { startYear, monthlyAmount, fxMode, fxPoints }: MultiOptions) {
-  return selected.map(dataset => {
-    const effectiveStartYear = clamp(startYear, ...yearRange(dataset))
+  const alignedStartMonth = selected.length > 1
+    ? selected.reduce((latest, dataset) => dataset.points[0].month > latest ? dataset.points[0].month : latest, `${startYear}-01`)
+    : null
+  const entries = selected.map(dataset => {
+    const effectiveStartYear = alignedStartMonth ? Number(alignedStartMonth.slice(0, 4)) : clamp(startYear, ...yearRange(dataset))
     const fx = dataset.currency === 'USD' && fxMode === 'jpy' ? { mode: fxMode, points: fxPoints } : undefined
-    const result = simulate(dataset, { startYear: effectiveStartYear, monthlyAmount, fx })
-    return { dataset, effectiveStartYear, result }
+    const result = simulate(dataset, { startYear: effectiveStartYear, startMonth: alignedStartMonth ?? undefined, monthlyAmount, fx })
+    return { dataset, effectiveStartYear, startMonth: alignedStartMonth ?? result.points[0]?.month ?? null, result }
   })
+  return { entries, alignedStartMonth }
 }
 
-export type SimulationEntry = ReturnType<typeof simulateAll>[number]
+export type SimulationEntry = ReturnType<typeof simulateAll>['entries'][number]
 export interface ChartRow { month: string; principal: number; [key: string]: string | number | undefined }
 
 export function mergeSeries(entries: SimulationEntry[]): ChartRow[] {

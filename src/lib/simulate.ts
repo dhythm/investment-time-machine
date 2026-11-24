@@ -10,18 +10,21 @@ export interface SimulationPoint {
 
 interface Options {
   startYear: number
+  startMonth?: string
   monthlyAmount: number
   fx?: { mode: FxMode; points: MonthlyPoint[] }
 }
 
-export function simulate(dataset: IndexDataset, { startYear, monthlyAmount, fx }: Options) {
+export function simulate(dataset: IndexDataset, { startYear, startMonth, monthlyAmount, fx }: Options) {
   const points: SimulationPoint[] = []
   const summary = { months: 0, totalPrincipal: 0, finalValue: 0, lumpFinalValue: 0, gain: 0, gainRate: 0, maxDrawdownRate: 0 }
   const [first, last] = yearRange(dataset)
-  if (!Number.isFinite(monthlyAmount) || monthlyAmount <= 0 || !Number.isInteger(startYear) || startYear < first || startYear > last) return { points, summary }
+  const year = startMonth === undefined ? startYear : Number(startMonth.slice(0, 4))
+  if (!Number.isFinite(monthlyAmount) || monthlyAmount <= 0 || !Number.isInteger(year) || year < first || year > last) return { points, summary }
 
   const rates = fx?.mode === 'jpy' ? new Map(fx.points.map(rate => [rate.month, rate])) : undefined
-  const period = dataset.points.filter(point => point.month >= `${startYear}-01`)
+  const from = startMonth ?? `${startYear}-01`
+  const period = dataset.points.filter(point => point.month >= from)
   const prices: MonthlyPoint[] = []
   let totalPrincipal = 0
   for (const point of period) {

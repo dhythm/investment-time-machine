@@ -20,6 +20,15 @@ describe('simulate', () => {
     { month: '2001-03', buy: 10, close: 5 },
   ]
 
+  it('uses the specified start month for both year validation and the first purchase', () => {
+    const result = simulate(dataset, { ...options, startYear: 1999, startMonth: '2001-02' })
+    expect(result.points).toEqual([
+      { month: '2001-02', units: 10, principal: 100, value: 100, lumpValue: 200 },
+      { month: '2001-03', units: 12.5, principal: 200, value: 250, lumpValue: 400 },
+    ])
+    expect(simulate(dataset, { ...options, startMonth: '1999-12' }).points).toEqual([])
+  })
+
   it('converts purchases at opening FX and both valuations at closing FX', () => {
     const result = simulate(dataset, { ...options, fx: { mode: 'jpy', points: rates } })
     expect(result.points).toEqual([

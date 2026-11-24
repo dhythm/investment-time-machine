@@ -18,7 +18,7 @@ function IndexDot({ id }: { id: string }) {
 
 function ComparisonTable({ entries, lump }: { entries: SimulationEntry[]; lump: boolean }) {
   const highest = Math.max(...entries.map(entry => entry.result.summary.finalValue))
-  return <div className="panel comparison"><table><caption>指数別の比較（データ開始月により積立月数・元本は異なります）</caption>
+  return <div className="panel comparison"><table><caption>指数別の比較（開始月を揃えています）</caption>
     <thead><tr>{['指数', '最終評価額', '元本', '損益', '損益率', '倍率', '最大ドローダウン', '積立月数', ...(lump ? ['一括投資の最終評価額'] : [])].map(title => <th scope="col" key={title}>{title}</th>)}</tr></thead>
     <tbody>{entries.map(({ dataset, result: { summary } }) => <tr key={dataset.id} className={summary.finalValue === highest ? 'highest' : undefined}>
       <th scope="row"><IndexDot id={dataset.id}/>{dataset.name}</th><td>{yen(summary.finalValue)}</td><td>{yen(summary.totalPrincipal)}</td>
@@ -36,7 +36,7 @@ function App() {
   const { indexIds, startYear, monthlyAmount, fxMode, lump } = params
   const selected = useMemo(() => datasets.filter(dataset => indexIds.includes(dataset.id)), [indexIds])
   const hasUSD = selected.some(dataset => dataset.currency === 'USD')
-  const entries = useMemo(() => simulateAll(selected, { startYear, monthlyAmount, fxMode, fxPoints: fxDataset.points }), [selected, startYear, monthlyAmount, fxMode])
+  const { entries, alignedStartMonth } = useMemo(() => simulateAll(selected, { startYear, monthlyAmount, fxMode, fxPoints: fxDataset.points }), [selected, startYear, monthlyAmount, fxMode])
   const rows = useMemo(() => mergeSeries(entries), [entries])
   const { points, summary } = entries[0].result
   const query = buildParams(params)
@@ -89,6 +89,7 @@ function App() {
         </div>
       </section>
       <section><div className="result-heading"><h2><small>02</small>シミュレーション結果</h2><div className="share"><span role="status">{notice.query === query && notice.text}</span><button onClick={copyLink}>リンクをコピー</button></div></div>
+        {alignedStartMonth && alignedStartMonth > `${startYear}-01` && <p>比較のため、全指数のデータが揃う {monthLabel(alignedStartMonth)} 開始に揃えています（指定開始年は {startYear} 年）</p>}
         {entries.length === 1 ? <div className="cards">
           <article className="featured"><h3>最終評価額</h3><strong>{yen(summary.finalValue)}</strong><p>{lastPoint ? `${monthLabel(lastPoint.month)}時点` : '対象データなし'}</p></article>
           {lump && <article><h3>一括投資の最終評価額</h3><strong>{yen(summary.lumpFinalValue)}</strong><p>{lumpNote}</p></article>}
@@ -102,7 +103,7 @@ function App() {
       </section>
       <footer><h2>計算の前提とデータ出典</h2><ul>
         <li>各月の月初（最初の営業日）の始値で購入し、月末の終値で評価します。</li><li>配当・分配金・税金・売買手数料は含みません。</li>
-        <li>共通の開始年よりデータ開始が遅い指数は、データ開始月から積み立てます。このため指数ごとに積立月数と元本が異なる場合があります。</li>
+        <li>複数の指数を比較するときは、指定開始年の1月以降で、選択した全指数のデータが揃う最初の月から積み立てます。単一の指数では、指定開始年の1月よりデータ開始が遅い場合、その指数のデータ開始月から積み立てます。</li>
         <li>為替換算は米ドル建て指数にのみ適用します。円建てモードでは月初のドル円レートで購入し、月末のレートで評価します。為替中立モードでは為替変動を考慮しません。</li>
         <li>一括投資の比較は、{lumpNote}の評価額です。</li>
         {selected.flatMap(dataset => dataset.notes.map(note => <li key={`${dataset.id}-${note}`}>{dataset.name}：{note}</li>))}
