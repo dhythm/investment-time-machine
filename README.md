@@ -34,6 +34,12 @@
 
 上記 1〜4 を実装済み。
 
+## 公開（GitHub Pages）
+
+- 公開 URL: https://dhythm.github.io/investment-time-machine/
+- main への push のたびに GitHub Actions（テスト→Pages用ビルド→デプロイ）が自動で再デプロイする
+- Pages 用ビルドだけ base を `/investment-time-machine/` にする（`vite build --mode pages`）。ローカル開発・通常ビルドは従来どおり
+
 ### 起動方法
 
 ```bash
@@ -89,7 +95,7 @@ v1 の残課題のうち、以下を実装した（デプロイは依頼者の�
 
 ### v2 の残課題
 
-- デプロイ（GitHub Pages 等）は見送り中
+- デプロイは v3 後に GitHub Pages で公開済み（下記「公開」参照）
 - 配当込み（トータルリターン）対応、FRED 取得の安定化（応答が不安定なことがあり、失敗時は既存データを保持する実装）
 
 ## v3 の状態（2026-11-24 完成）：複数指数の同時比較
