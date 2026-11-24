@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { datasets } from '../data'
 import { buildParams, parseParams, type Params } from './urlParams'
 
-const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'neutral', lump: false }
+const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'jpy', lump: false }
 
 describe('URL parameters', () => {
   it('round-trips a shareable query', () => {
@@ -13,10 +13,15 @@ describe('URL parameters', () => {
   it('keeps each known id once in dataset order', () => {
     expect(parseParams('?idx=acwi,other,nikkei225,sp500,acwi').indexIds).toEqual(['sp500', 'nikkei225', 'acwi'])
   })
-  it.each(['fx=jpy', 'lump=1', 'fx=jpy&lump=1'])('round-trips %s', extras => {
+  it('opens explicit fx=jpy links and omits fx when sharing them again', () => {
+    const params = parseParams('?fx=jpy')
+    expect(params.fxMode).toBe('jpy')
+    expect(new URLSearchParams(buildParams(params)).has('fx')).toBe(false)
+  })
+  it.each(['fx=neutral', 'lump=1', 'fx=neutral&lump=1'])('round-trips %s', extras => {
     const query = `?idx=acwi&from=2019&amt=30000&${extras}`
     const params = parseParams(query)
-    expect(params.fxMode).toBe(extras.includes('fx=jpy') ? 'jpy' : 'neutral')
+    expect(params.fxMode).toBe(extras.includes('fx=neutral') ? 'neutral' : 'jpy')
     expect(params.lump).toBe(extras.includes('lump=1'))
     expect(buildParams(params)).toBe(query)
   })
