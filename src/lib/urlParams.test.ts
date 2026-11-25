@@ -1,11 +1,31 @@
 import { describe, expect, it } from 'vitest'
 import { datasets } from '../data'
-import { buildParams, parseParams, type Params } from './urlParams'
+import { buildParams, buildScenarioB, parseParams, parseScenario, parseScenarioB, type Params } from './urlParams'
 
 const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'jpy', lump: false,
-  basis: 'price', allocations: null, withdrawalYears: 0, withdrawalAmount: 100000 }
+  basis: 'price', allocations: null, withdrawalYears: 0, withdrawalAmount: 100000, tax: false, feeRate: 0, frequency: 'monthly' }
 
 describe('URL parameters', () => {
+  it.each(['2', 'y'])('round-trips tax, decimal percent fees and freq=%s', freq => {
+    const params = parseParams(`?tax=1&fee=0.101&freq=${freq}`)
+    expect(params).toMatchObject({ tax: true, feeRate: 0.101, frequency: freq === '2' ? 'bimonthly' : 'yearly' })
+    expect(buildParams(params)).toBe(`?idx=sp500&from=2000&amt=30000&tax=1&fee=0.1&freq=${freq}`)
+    expect(parseParams(buildParams(params))).toEqual({ ...params, feeRate: 0.1 })
+  })
+  it.each(['Infinity', 'NaN', 'none', '-0.1', '5.01'])('defaults invalid fee=%s and unknown flags', fee => {
+    expect(parseParams(`?tax=true&fee=${fee}&freq=12`)).toEqual(defaults)
+  })
+  it('enables a separate scenario only with cmp=1 and bidx', () => {
+    expect(parseScenarioB('?cmp=1&idx=acwi&bfrom=2005')).toBeNull()
+    expect(parseScenarioB('?cmp=0&bidx=acwi')).toBeNull()
+    expect(parseScenarioB('?bidx=acwi')).toBeNull()
+    expect(parseScenario('?bidx=acwi')).toEqual({ ...defaults, indexIds: ['acwi'] })
+    const scenario = parseParams('?idx=acwi,sp500&alloc=80,20&from=2005&amt=2000&fx=neutral&div=1&lump=1&wy=2&wa=3000&tax=1&fee=5&freq=y')
+    const query = `?cmp=1&${buildScenarioB(scenario)}`
+    expect(parseScenarioB(query)).toEqual(scenario)
+    expect(parseParams(query)).toEqual(defaults)
+    expect(buildScenarioB(defaults)).toBe('bidx=sp500&bfrom=2000&bamt=30000')
+  })
   it('pairs shares in incoming idx order and round-trips all new parameters', () => {
     const params = parseParams('?idx=nikkei225,sp500&alloc=39.125,60.1&div=1&wy=10&wa=50000')
     expect(params).toEqual({ ...defaults, indexIds: ['sp500', 'nikkei225'], allocations: { nikkei225: 39.125, sp500: 60.1 }, basis: 'adjusted', withdrawalYears: 10, withdrawalAmount: 50000 })

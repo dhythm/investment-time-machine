@@ -1,5 +1,7 @@
 export type FxMode = 'neutral' | 'jpy'
 export type PriceBasis = 'price' | 'adjusted'
+export type ContributionFrequency = 'monthly' | 'bimonthly' | 'yearly'
+export const TAX_RATE = 0.20315
 export const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value))
 
 export interface MonthlyPoint {

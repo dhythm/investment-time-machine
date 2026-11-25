@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { mergeSeries, simulateAll } from './multi'
+import { mergeSeries, portfolioSeries, simulateAll } from './multi'
+import { simulate } from './simulate'
 import type { IndexDataset } from './types'
 
 function fixture(id: string, currency: string, months: string[]): IndexDataset {
@@ -11,6 +12,13 @@ const jpy = fixture('jpy', 'JPY', ['2001-02', '2001-03'])
 const options = { startYear: 1999, monthlyAmount: 100, fxMode: 'neutral', fxPoints: usd.points.map(({ month }) => ({ month, buy: 2, close: 3 })) } as const
 
 describe('simulateAll', () => {
+  it('forwards taxes, fees and frequency to every index', () => {
+    const settings = { tax: true, feeRate: 0.12, frequency: 'bimonthly' } as const
+    const selected = [usd, jpy].map(dataset => ({ ...dataset, points: dataset.points.map(point => ({ ...point, close: 20 })) }))
+    for (const { dataset, result } of simulateAll(selected, { ...options, ...settings }).entries) {
+      expect(result).toEqual(simulate(dataset, { startYear: 2001, startMonth: '2001-02', monthlyAmount: 50, ...settings }))
+    }
+  })
   it('aligns all contributions to the latest first month', () => {
     const third = fixture('third', 'JPY', ['2001-01', '2001-02', '2001-03'])
     const { entries, alignedStartMonth } = simulateAll([usd, jpy, third], options)
@@ -68,6 +76,14 @@ describe('simulateAll', () => {
 })
 
 describe('mergeSeries', () => {
+  it('carries the last value and principal through missing months of the portfolio', () => {
+    const sparse = { ...usd, points: [usd.points[0], { ...usd.points[3], close: 20 }] }
+    expect(portfolioSeries([jpy, sparse].flatMap(dataset => simulateAll([dataset], options).entries))).toEqual([
+      { month: '2000-12', value: 100, principal: 100 },
+      { month: '2001-02', value: 200, principal: 200 },
+      { month: '2001-03', value: 600, principal: 400 },
+    ])
+  })
   it('merges months in order, omits missing keys and sums principals across series', () => {
     const sparse = fixture('usd', 'USD', ['2000-12', '2001-01', '2001-03'])
     expect(mergeSeries([jpy, sparse].flatMap(dataset => simulateAll([dataset], options).entries))).toEqual([

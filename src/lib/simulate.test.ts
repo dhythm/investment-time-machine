@@ -14,7 +14,7 @@ const dataset: IndexDataset = {
 
 describe('simulate', () => {
   const options = { startYear: 2001, monthlyAmount: 100 }
-  const noWithdrawals = { withdrawalStartMonth: null, depletedMonth: null, totalWithdrawn: 0 }
+  const noWithdrawals = { withdrawalStartMonth: null, depletedMonth: null, totalWithdrawn: 0, totalTaxPaid: 0 }
   const rates = [
     { month: '2001-01', buy: 5, close: 6 },
     { month: '2001-02', buy: 2, close: 3 },
@@ -95,5 +95,54 @@ describe('simulate', () => {
 
   it.each([0, -1])('keeps the original series with %i withdrawal months', months => {
     expect(simulate(dataset, { ...options, withdrawal: { months, monthlyAmount: 60 } })).toEqual(simulate(dataset, options))
+  })
+
+  it('taxes only positive liquidation gains and measures drawdown after tax', () => {
+    const { points, summary } = simulate(dataset, { ...options, tax: true })
+    expect(summary.finalValue).toBeCloseTo(350 - 50 * 0.20315)
+    expect(points[0].lumpValue).toBeCloseTo(600 - 300 * 0.20315)
+    expect(points[1]).toMatchObject({ value: 150, lumpValue: 150 })
+    expect(summary.maxDrawdownRate).toBeCloseTo(1 - 150 / (200 - 100 * 0.20315))
+    expect(summary.totalTaxPaid).toBe(0)
+    expect(simulate(dataset, { ...options, tax: false })).toEqual(simulate(dataset, options))
+  })
+
+  it('reduces each basis proportionally and only counts tax on actual periodic-plan sales', () => {
+    const rising = { ...dataset, points: dataset.points.map(({ month }, index) => ({ month, buy: 10 * 2 ** index, close: 10 * 2 ** index })) }
+    const { points, summary } = simulate(rising, { ...options, startYear: 2000, tax: true, withdrawal: { months: 2, monthlyAmount: 300 } })
+    expect(points[2].value).toBeCloseTo(300 - 200 * 0.20315)
+    expect(points[2].lumpValue).toBeCloseTo(500 - 375 * 0.20315)
+    expect(summary.finalValue).toBeCloseTo(300 - 250 * 0.20315)
+    expect(summary.totalTaxPaid).toBeCloseTo((200 + 250) * 0.20315)
+    expect(summary.totalWithdrawn).toBeCloseTo(600 - summary.totalTaxPaid)
+  })
+
+  it('deducts fees from both holdings after buying and selling without reducing basis', () => {
+    const flat = { ...dataset, points: dataset.points.map(({ month }) => ({ month, buy: 10, close: 20 })) }
+    const { points, summary } = simulate(flat, { ...options, feeRate: 0.12, tax: true, withdrawal: { months: 1, monthlyAmount: 10 } })
+    const units = (10 * 0.99 + 10) * 0.99
+    expect(points[1].units).toBeCloseTo(units)
+    expect(points[1].value).toBeCloseTo(units * 20 - (units * 20 - 200) * 0.20315)
+    expect(points[2].units).toBeCloseTo((units - 1) * 0.99)
+    expect(summary.totalTaxPaid).toBe(0)
+    expect(points[0].lumpValue).toBeCloseTo(396 - 196 * 0.20315)
+  })
+
+  it('compounds monthly fees even in months without purchases', () => {
+    const flat = { ...dataset, points: dataset.points.map(({ month }) => ({ month, buy: 10, close: 10 })) }
+    const { points } = simulate(flat, { ...options, frequency: 'yearly', feeRate: 0.12 })
+    points.forEach((point, index) => {
+      expect(point.units).toBeCloseTo(120 * 0.99 ** (index + 1))
+      expect(point.lumpValue).toBeCloseTo(1200 * 0.99 ** (index + 1))
+    })
+  })
+
+  it.each([['bimonthly', 2], ['yearly', 12]] as const)('%s buys every %i months with equal annual principal', (frequency, interval) => {
+    const flat = { ...dataset, points: Array.from({ length: 24 }, (_, index) => ({
+      month: new Date(Date.UTC(2001, index, 1)).toISOString().slice(0, 7), buy: 10, close: 10 })) }
+    const { points, summary } = simulate(flat, { ...options, frequency })
+    expect(points.map(point => point.principal)).toEqual(flat.points.map((_, index) => (Math.floor(index / interval) + 1) * 100 * interval))
+    expect(summary.months).toBe(24 / interval)
+    expect(summary.totalPrincipal).toBe(simulate(flat, options).summary.totalPrincipal)
   })
 })

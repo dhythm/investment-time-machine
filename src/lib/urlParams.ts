@@ -1,12 +1,15 @@
 import { datasets, datasetYearRange } from '../data'
-import { clamp, type FxMode, type PriceBasis } from './types'
+import { clamp, type ContributionFrequency, type FxMode, type PriceBasis } from './types'
 
 export interface Params { indexIds: string[]; startYear: number; monthlyAmount: number; fxMode: FxMode; lump: boolean;
-  basis: PriceBasis; allocations: Record<string, number> | null; withdrawalYears: number; withdrawalAmount: number }
+  basis: PriceBasis; allocations: Record<string, number> | null; withdrawalYears: number; withdrawalAmount: number;
+  tax: boolean; feeRate: number; frequency: ContributionFrequency }
+export type ScenarioParams = Params
 export const minAmount = 1000
 export const maxAmount = 1000000
 export const maxWithdrawalYears = 50
 export const maxWithdrawalAmount = 10000000
+const defaultWithdrawalAmount = 100000
 
 function integer(raw: string | null, fallback: number) {
   if (!raw || !/^-?\d+$/.test(raw)) return fallback
@@ -15,13 +18,18 @@ function integer(raw: string | null, fallback: number) {
 }
 
 export function parseParams(search: string): Params {
-  const query = new URLSearchParams(search)
+  return readParams(new URLSearchParams(search))
+}
+
+function readParams(query: URLSearchParams): Params {
   const requested = (query.get('idx') ?? 'sp500').split(',')
   const indexIds = datasets.filter(dataset => requested.includes(dataset.id)).map(dataset => dataset.id)
   const shares = query.get('alloc')?.split(',').map(raw => raw.trim() ? Number(raw) : NaN)
   const allocations = shares && shares.length === requested.length && requested.length === indexIds.length
     && shares.every(share => Number.isFinite(share) && share >= 0) && shares.some(share => share > 0)
     ? Object.fromEntries(requested.map((id, index) => [id, shares[index]])) : null
+  const fee = Number(query.get('fee'))
+  const freq = query.get('freq')
   return {
     indexIds: indexIds.length ? indexIds : ['sp500'],
     startYear: clamp(integer(query.get('from'), 2000), ...datasetYearRange),
@@ -30,11 +38,32 @@ export function parseParams(search: string): Params {
     lump: query.get('lump') === '1',
     basis: query.get('div') === '1' ? 'adjusted' : 'price', allocations,
     withdrawalYears: clamp(integer(query.get('wy'), 0), 0, maxWithdrawalYears),
-    withdrawalAmount: clamp(integer(query.get('wa'), 100000), 0, maxWithdrawalAmount),
+    withdrawalAmount: clamp(integer(query.get('wa'), defaultWithdrawalAmount), 0, maxWithdrawalAmount),
+    tax: query.get('tax') === '1',
+    feeRate: Number.isFinite(fee) && fee >= 0 && fee <= 5 ? fee : 0,
+    frequency: freq === '2' ? 'bimonthly' : freq === 'y' ? 'yearly' : 'monthly',
   }
 }
 
-export function buildParams({ indexIds, startYear, monthlyAmount, fxMode, lump, basis, allocations, withdrawalYears, withdrawalAmount }: Params) {
+function scenarioFromQuery(query: URLSearchParams): ScenarioParams | null {
+  if (!query.has('bidx')) return null
+  const scenario = new URLSearchParams()
+  query.forEach((value, key) => {
+    if (key.startsWith('b')) scenario.append(key.slice(1), value)
+  })
+  return readParams(scenario)
+}
+
+export function parseScenario(search: string): ScenarioParams | null {
+  return scenarioFromQuery(new URLSearchParams(search))
+}
+
+export function parseScenarioB(search: string): ScenarioParams | null {
+  const query = new URLSearchParams(search)
+  return query.get('cmp') === '1' ? scenarioFromQuery(query) : null
+}
+
+function writeParams({ indexIds, startYear, monthlyAmount, fxMode, lump, basis, allocations, withdrawalYears, withdrawalAmount, tax, feeRate, frequency }: Params) {
   const query = new URLSearchParams({ idx: indexIds.join(','), from: String(startYear), amt: String(monthlyAmount) })
   if (fxMode === 'neutral') query.set('fx', 'neutral')
   if (lump) query.set('lump', '1')
@@ -44,5 +73,22 @@ export function buildParams({ indexIds, startYear, monthlyAmount, fxMode, lump, 
     query.set('wy', String(withdrawalYears))
     query.set('wa', String(withdrawalAmount))
   }
-  return `?${query}`
+  if (tax) query.set('tax', '1')
+  if (feeRate > 0) query.set('fee', String(Number(feeRate.toFixed(2))))
+  if (frequency === 'bimonthly') query.set('freq', '2')
+  if (frequency === 'yearly') query.set('freq', 'y')
+  return query
+}
+
+export function buildParams(params: Params) {
+  return `?${writeParams(params)}`
+}
+
+export function buildScenarioB(params: ScenarioParams) {
+  const query = writeParams(params)
+  if (params.withdrawalAmount === defaultWithdrawalAmount) query.delete('wa')
+  else query.set('wa', String(params.withdrawalAmount))
+  const scenario = new URLSearchParams()
+  query.forEach((value, key) => scenario.set(`b${key}`, value))
+  return scenario.toString()
 }
