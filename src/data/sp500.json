@@ -5,2521 +5,3526 @@
   "currency": "USD",
   "source": "Yahoo Finance (chart API)",
   "sourceUrl": "https://finance.yahoo.com/quote/^GSPC",
-  "retrievedAt": "2026-11-23",
+  "retrievedAt": "2026-11-25",
   "notes": [
     "価格指数（配当を含まない）",
+    "配当込みモードでは配当込み指数「S&P 500 Total Return（^SP500TR）」の価格で計算する（1988年1月以降）",
     "米ドル建て指数。円建てモードではドル円レート（FRED DEXJPUS）で換算する"
   ],
   "points": [
     {
       "month": "1985-01",
       "buy": 167.2,
-      "close": 179.63
+      "close": 179.63,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-02",
       "buy": 179.63,
-      "close": 181.18
+      "close": 181.18,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-03",
       "buy": 181.18,
-      "close": 180.66
+      "close": 180.66,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-04",
       "buy": 180.66,
-      "close": 179.83
+      "close": 179.83,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-05",
       "buy": 179.83,
-      "close": 189.55
+      "close": 189.55,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-06",
       "buy": 189.55,
-      "close": 191.85
+      "close": 191.85,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-07",
       "buy": 191.85,
-      "close": 190.92
+      "close": 190.92,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-08",
       "buy": 190.92,
-      "close": 188.63
+      "close": 188.63,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-09",
       "buy": 188.63,
-      "close": 182.08
+      "close": 182.08,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-10",
       "buy": 182.06,
-      "close": 189.82
+      "close": 189.82,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-11",
       "buy": 189.82,
-      "close": 202.17
+      "close": 202.17,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1985-12",
       "buy": 202.17,
-      "close": 211.28
+      "close": 211.28,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-01",
       "buy": 211.28,
-      "close": 211.78
+      "close": 211.78,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-02",
       "buy": 211.78,
-      "close": 226.92
+      "close": 226.92,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-03",
       "buy": 226.92,
-      "close": 238.9
+      "close": 238.9,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-04",
       "buy": 238.9,
-      "close": 235.52
+      "close": 235.52,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-05",
       "buy": 235.52,
-      "close": 247.35
+      "close": 247.35,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-06",
       "buy": 246.04,
-      "close": 250.84
+      "close": 250.84,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-07",
       "buy": 250.67,
-      "close": 236.12
+      "close": 236.12,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-08",
       "buy": 236.12,
-      "close": 252.93
+      "close": 252.93,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-09",
       "buy": 252.93,
-      "close": 231.32
+      "close": 231.32,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-10",
       "buy": 231.32,
-      "close": 243.98
+      "close": 243.98,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-11",
       "buy": 243.97,
-      "close": 249.22
+      "close": 249.22,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1986-12",
       "buy": 249.22,
-      "close": 242.17
+      "close": 242.17,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-01",
       "buy": 242.17,
-      "close": 274.08
+      "close": 274.08,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-02",
       "buy": 274.08,
-      "close": 284.2
+      "close": 284.2,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-03",
       "buy": 284.17,
-      "close": 291.7
+      "close": 291.7,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-04",
       "buy": 291.59,
-      "close": 288.36
+      "close": 288.36,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-05",
       "buy": 286.99,
-      "close": 290.1
+      "close": 290.1,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-06",
       "buy": 290.12,
-      "close": 304
+      "close": 304,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-07",
       "buy": 303.99,
-      "close": 318.66
+      "close": 318.66,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-08",
       "buy": 318.62,
-      "close": 329.8
+      "close": 329.8,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-09",
       "buy": 329.81,
-      "close": 321.83
+      "close": 321.83,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-10",
       "buy": 321.83,
-      "close": 251.79
+      "close": 251.79,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-11",
       "buy": 251.73,
-      "close": 230.3
+      "close": 230.3,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1987-12",
       "buy": 230.32,
-      "close": 247.08
+      "close": 247.08,
+      "adjBuy": null,
+      "adjClose": null
     },
     {
       "month": "1988-01",
       "buy": 247.1,
-      "close": 257.07
+      "close": 257.07,
+      "adjBuy": 256.02,
+      "adjClose": 257.47
     },
     {
       "month": "1988-02",
       "buy": 257.05,
-      "close": 267.82
+      "close": 267.82,
+      "adjBuy": 255.51,
+      "adjClose": 269.48
     },
     {
       "month": "1988-03",
       "buy": 267.82,
-      "close": 258.89
+      "close": 258.89,
+      "adjBuy": 269.44,
+      "adjClose": 261.15
     },
     {
       "month": "1988-04",
       "buy": 258.89,
-      "close": 261.33
+      "close": 261.33,
+      "adjBuy": 258.41,
+      "adjClose": 264.04
     },
     {
       "month": "1988-05",
       "buy": 261.36,
-      "close": 262.16
+      "close": 262.16,
+      "adjBuy": 264.33,
+      "adjClose": 266.32
     },
     {
       "month": "1988-06",
       "buy": 262.16,
-      "close": 273.5
+      "close": 273.5,
+      "adjBuy": 270.95,
+      "adjClose": 278.54
     },
     {
       "month": "1988-07",
       "buy": 273.5,
-      "close": 272.02
+      "close": 272.02,
+      "adjBuy": 276.86,
+      "adjClose": 277.49
     },
     {
       "month": "1988-08",
       "buy": 272.03,
-      "close": 261.52
+      "close": 261.52,
+      "adjBuy": 277.76,
+      "adjClose": 268.07
     },
     {
       "month": "1988-09",
       "buy": 261.52,
-      "close": 271.91
+      "close": 271.91,
+      "adjBuy": 264.85,
+      "adjClose": 279.49
     },
     {
       "month": "1988-10",
       "buy": 271.89,
-      "close": 278.97
+      "close": 278.97,
+      "adjBuy": 279.09,
+      "adjClose": 287.27
     },
     {
       "month": "1988-11",
       "buy": 278.97,
-      "close": 273.7
+      "close": 273.7,
+      "adjBuy": 287.51,
+      "adjClose": 283.18
     },
     {
       "month": "1988-12",
       "buy": 273.68,
-      "close": 277.72
+      "close": 277.72,
+      "adjBuy": 281.95,
+      "adjClose": 288.12
     },
     {
       "month": "1989-01",
       "buy": 277.72,
-      "close": 297.47
+      "close": 297.47,
+      "adjBuy": 285.65,
+      "adjClose": 309.21
     },
     {
       "month": "1989-02",
       "buy": 297.47,
-      "close": 288.86
+      "close": 288.86,
+      "adjBuy": 308.86,
+      "adjClose": 301.51
     },
     {
       "month": "1989-03",
       "buy": 288.86,
-      "close": 294.87
+      "close": 294.87,
+      "adjBuy": 299.77,
+      "adjClose": 308.54
     },
     {
       "month": "1989-04",
       "buy": 294.87,
-      "close": 309.64
+      "close": 309.64,
+      "adjBuy": 310.21,
+      "adjClose": 324.56
     },
     {
       "month": "1989-05",
       "buy": 309.64,
-      "close": 320.52
+      "close": 320.52,
+      "adjBuy": 324.11,
+      "adjClose": 337.69
     },
     {
       "month": "1989-06",
       "buy": 320.51,
-      "close": 317.98
+      "close": 317.98,
+      "adjBuy": 339.25,
+      "adjClose": 335.78
     },
     {
       "month": "1989-07",
       "buy": 317.98,
-      "close": 346.08
+      "close": 346.08,
+      "adjBuy": 337.19,
+      "adjClose": 366.1
     },
     {
       "month": "1989-08",
       "buy": 346.08,
-      "close": 351.45
+      "close": 351.45,
+      "adjBuy": 363.77,
+      "adjClose": 373.25
     },
     {
       "month": "1989-09",
       "buy": 351.45,
-      "close": 349.15
+      "close": 349.15,
+      "adjBuy": 375.78,
+      "adjClose": 371.74
     },
     {
       "month": "1989-10",
       "buy": 349.15,
-      "close": 340.36
+      "close": 340.36,
+      "adjBuy": 373.59,
+      "adjClose": 363.11
     },
     {
       "month": "1989-11",
       "buy": 340.36,
-      "close": 345.99
+      "close": 345.99,
+      "adjBuy": 364.01,
+      "adjClose": 370.51
     },
     {
       "month": "1989-12",
       "buy": 346.01,
-      "close": 353.4
+      "close": 353.4,
+      "adjBuy": 375.52,
+      "adjClose": 379.41
     },
     {
       "month": "1990-01",
       "buy": 353.4,
-      "close": 329.08
+      "close": 329.08,
+      "adjBuy": 386.16,
+      "adjClose": 353.94
     },
     {
       "month": "1990-02",
       "buy": 329.08,
-      "close": 331.89
+      "close": 331.89,
+      "adjBuy": 353.68,
+      "adjClose": 358.5
     },
     {
       "month": "1990-03",
       "buy": 331.89,
-      "close": 339.94
+      "close": 339.94,
+      "adjBuy": 359.46,
+      "adjClose": 368
     },
     {
       "month": "1990-04",
       "buy": 339.94,
-      "close": 330.8
+      "close": 330.8,
+      "adjBuy": 366.72,
+      "adjClose": 358.82
     },
     {
       "month": "1990-05",
       "buy": 330.8,
-      "close": 361.23
+      "close": 361.23,
+      "adjBuy": 360.48,
+      "adjClose": 393.8
     },
     {
       "month": "1990-06",
       "buy": 361.26,
-      "close": 358.02
+      "close": 358.02,
+      "adjBuy": 395.94,
+      "adjClose": 391.14
     },
     {
       "month": "1990-07",
       "buy": 358.02,
-      "close": 356.15
+      "close": 356.15,
+      "adjBuy": 392.81,
+      "adjClose": 389.89
     },
     {
       "month": "1990-08",
       "buy": 356.15,
-      "close": 322.56
+      "close": 322.56,
+      "adjBuy": 389.22,
+      "adjClose": 354.65
     },
     {
       "month": "1990-09",
       "buy": 322.56,
-      "close": 306.05
+      "close": 306.05,
+      "adjBuy": 355.32,
+      "adjClose": 337.39
     },
     {
       "month": "1990-10",
       "buy": 306.1,
-      "close": 304
+      "close": 304,
+      "adjBuy": 347.3,
+      "adjClose": 335.95
     },
     {
       "month": "1990-11",
       "buy": 303.99,
-      "close": 322.22
+      "close": 322.22,
+      "adjBuy": 339.35,
+      "adjClose": 357.67
     },
     {
       "month": "1990-12",
       "buy": 322.23,
-      "close": 330.22
+      "close": 330.22,
+      "adjBuy": 360,
+      "adjClose": 367.63
     },
     {
       "month": "1991-01",
       "buy": 330.2,
-      "close": 343.93
+      "close": 343.93,
+      "adjBuy": 363.44,
+      "adjClose": 383.64
     },
     {
       "month": "1991-02",
       "buy": 343.91,
-      "close": 367.07
+      "close": 367.07,
+      "adjBuy": 382.68,
+      "adjClose": 411.08
     },
     {
       "month": "1991-03",
       "buy": 367.07,
-      "close": 375.22
+      "close": 375.22,
+      "adjBuy": 414.92,
+      "adjClose": 421.03
     },
     {
       "month": "1991-04",
       "buy": 375.22,
-      "close": 375.34
+      "close": 375.34,
+      "adjBuy": 416.74,
+      "adjClose": 422.03
     },
     {
       "month": "1991-05",
       "buy": 375.35,
-      "close": 389.83
+      "close": 389.83,
+      "adjBuy": 427.59,
+      "adjClose": 440.24
     },
     {
       "month": "1991-06",
       "buy": 389.81,
-      "close": 371.16
+      "close": 371.16,
+      "adjBuy": 438.38,
+      "adjClose": 420.07
     },
     {
       "month": "1991-07",
       "buy": 371.18,
-      "close": 387.81
+      "close": 387.81,
+      "adjBuy": 427.73,
+      "adjClose": 439.65
     },
     {
       "month": "1991-08",
       "buy": 387.81,
-      "close": 395.43
+      "close": 395.43,
+      "adjBuy": 438.89,
+      "adjClose": 450.06
     },
     {
       "month": "1991-09",
       "buy": 395.43,
-      "close": 387.86
+      "close": 387.86,
+      "adjBuy": 446.39,
+      "adjClose": 442.53
     },
     {
       "month": "1991-10",
       "buy": 387.86,
-      "close": 392.45
+      "close": 392.45,
+      "adjBuy": 444.08,
+      "adjClose": 448.48
     },
     {
       "month": "1991-11",
       "buy": 392.46,
-      "close": 375.22
+      "close": 375.22,
+      "adjBuy": 447.2,
+      "adjClose": 430.41
     },
     {
       "month": "1991-12",
       "buy": 375.11,
-      "close": 417.09
+      "close": 417.09,
+      "adjBuy": 437.67,
+      "adjClose": 479.63
     },
     {
       "month": "1992-01",
       "buy": 417.03,
-      "close": 408.78
+      "close": 408.78,
+      "adjBuy": 479.84,
+      "adjClose": 470.7
     },
     {
       "month": "1992-02",
       "buy": 408.79,
-      "close": 412.7
+      "close": 412.7,
+      "adjBuy": 471.68,
+      "adjClose": 476.79
     },
     {
       "month": "1992-03",
       "buy": 412.68,
-      "close": 403.69
+      "close": 403.69,
+      "adjBuy": 476.66,
+      "adjClose": 467.52
     },
     {
       "month": "1992-04",
       "buy": 403.67,
-      "close": 414.95
+      "close": 414.95,
+      "adjBuy": 468.16,
+      "adjClose": 481.25
     },
     {
       "month": "1992-05",
       "buy": 414.95,
-      "close": 415.35
+      "close": 415.35,
+      "adjBuy": 478.45,
+      "adjClose": 483.6
     },
     {
       "month": "1992-06",
       "buy": 415.35,
-      "close": 408.14
+      "close": 408.14,
+      "adjBuy": 486.04,
+      "adjClose": 476.41
     },
     {
       "month": "1992-07",
       "buy": 408.2,
-      "close": 424.21
+      "close": 424.21,
+      "adjBuy": 481.95,
+      "adjClose": 495.87
     },
     {
       "month": "1992-08",
       "buy": 424.19,
-      "close": 414.03
+      "close": 414.03,
+      "adjBuy": 497.05,
+      "adjClose": 485.72
     },
     {
       "month": "1992-09",
       "buy": 414.03,
-      "close": 417.8
+      "close": 417.8,
+      "adjBuy": 488.23,
+      "adjClose": 491.43
     },
     {
       "month": "1992-10",
       "buy": 417.8,
-      "close": 418.68
+      "close": 418.68,
+      "adjBuy": 489.66,
+      "adjClose": 493.13
     },
     {
       "month": "1992-11",
       "buy": 418.66,
-      "close": 431.35
+      "close": 431.35,
+      "adjBuy": 498.08,
+      "adjClose": 509.92
     },
     {
       "month": "1992-12",
       "buy": 431.35,
-      "close": 435.71
+      "close": 435.71,
+      "adjBuy": 509.42,
+      "adjClose": 516.18
     },
     {
       "month": "1993-01",
       "buy": 435.7,
-      "close": 438.78
+      "close": 438.78,
+      "adjBuy": 516,
+      "adjClose": 520.49
     },
     {
       "month": "1993-02",
       "buy": 438.78,
-      "close": 443.38
+      "close": 443.38,
+      "adjBuy": 525.03,
+      "adjClose": 527.59
     },
     {
       "month": "1993-03",
       "buy": 443.38,
-      "close": 451.67
+      "close": 451.67,
+      "adjBuy": 526.07,
+      "adjClose": 538.72
     },
     {
       "month": "1993-04",
       "buy": 451.67,
-      "close": 440.19
+      "close": 440.19,
+      "adjBuy": 537.09,
+      "adjClose": 525.7
     },
     {
       "month": "1993-05",
       "buy": 440.19,
-      "close": 450.19
+      "close": 450.19,
+      "adjBuy": 528.55,
+      "adjClose": 539.76
     },
     {
       "month": "1993-06",
       "buy": 450.23,
-      "close": 450.53
+      "close": 450.53,
+      "adjBuy": 544.2,
+      "adjClose": 541.34
     },
     {
       "month": "1993-07",
       "buy": 450.54,
-      "close": 448.13
+      "close": 448.13,
+      "adjBuy": 539.56,
+      "adjClose": 539.16
     },
     {
       "month": "1993-08",
       "buy": 448.13,
-      "close": 463.56
+      "close": 463.56,
+      "adjBuy": 541.75,
+      "adjClose": 559.62
     },
     {
       "month": "1993-09",
       "buy": 463.55,
-      "close": 458.93
+      "close": 458.93,
+      "adjBuy": 559.2,
+      "adjClose": 555.33
     },
     {
       "month": "1993-10",
       "buy": 458.93,
-      "close": 467.83
+      "close": 467.83,
+      "adjBuy": 558.24,
+      "adjClose": 566.82
     },
     {
       "month": "1993-11",
       "buy": 467.83,
-      "close": 461.79
+      "close": 461.79,
+      "adjBuy": 568.49,
+      "adjClose": 561.41
     },
     {
       "month": "1993-12",
       "buy": 461.93,
-      "close": 466.45
+      "close": 466.45,
+      "adjBuy": 561.58,
+      "adjClose": 568.2
     },
     {
       "month": "1994-01",
       "buy": 466.51,
-      "close": 481.61
+      "close": 481.61,
+      "adjBuy": 567.1,
+      "adjClose": 587.52
     },
     {
       "month": "1994-02",
       "buy": 481.6,
-      "close": 467.14
+      "close": 467.14,
+      "adjBuy": 585.27,
+      "adjClose": 571.57
     },
     {
       "month": "1994-03",
       "buy": 467.19,
-      "close": 445.77
+      "close": 445.77,
+      "adjBuy": 568.33,
+      "adjClose": 546.65
     },
     {
       "month": "1994-04",
       "buy": 445.66,
-      "close": 450.91
+      "close": 450.91,
+      "adjBuy": 538.37,
+      "adjClose": 553.66
     },
     {
       "month": "1994-05",
       "buy": 450.91,
-      "close": 456.5
+      "close": 456.5,
+      "adjBuy": 556.44,
+      "adjClose": 562.75
     },
     {
       "month": "1994-06",
       "buy": 456.5,
-      "close": 444.27
+      "close": 444.27,
+      "adjBuy": 564.19,
+      "adjClose": 548.96
     },
     {
       "month": "1994-07",
       "buy": 444.27,
-      "close": 458.26
+      "close": 458.26,
+      "adjBuy": 551.47,
+      "adjClose": 566.98
     },
     {
       "month": "1994-08",
       "buy": 458.28,
-      "close": 475.49
+      "close": 475.49,
+      "adjBuy": 570.54,
+      "adjClose": 590.23
     },
     {
       "month": "1994-09",
       "buy": 475.49,
-      "close": 462.71
+      "close": 462.71,
+      "adjBuy": 587.45,
+      "adjClose": 575.8
     },
     {
       "month": "1994-10",
       "buy": 462.69,
-      "close": 472.35
+      "close": 472.35,
+      "adjBuy": 574.82,
+      "adjClose": 588.73
     },
     {
       "month": "1994-11",
       "buy": 472.26,
-      "close": 453.69
+      "close": 453.69,
+      "adjBuy": 583.98,
+      "adjClose": 567.29
     },
     {
       "month": "1994-12",
       "buy": 453.55,
-      "close": 459.27
+      "close": 459.27,
+      "adjBuy": 561.43,
+      "adjClose": 575.71
     },
     {
       "month": "1995-01",
       "buy": 459.21,
-      "close": 470.42
+      "close": 470.42,
+      "adjBuy": 575.52,
+      "adjClose": 590.64
     },
     {
       "month": "1995-02",
       "buy": 470.42,
-      "close": 487.39
+      "close": 487.39,
+      "adjBuy": 590.65,
+      "adjClose": 613.65
     },
     {
       "month": "1995-03",
       "buy": 487.39,
-      "close": 500.71
+      "close": 500.71,
+      "adjBuy": 611.64,
+      "adjClose": 631.76
     },
     {
       "month": "1995-04",
       "buy": 500.7,
-      "close": 514.71
+      "close": 514.71,
+      "adjBuy": 633.33,
+      "adjClose": 650.36
     },
     {
       "month": "1995-05",
       "buy": 514.76,
-      "close": 533.4
+      "close": 533.4,
+      "adjBuy": 649.95,
+      "adjClose": 676.36
     },
     {
       "month": "1995-06",
       "buy": 533.4,
-      "close": 544.75
+      "close": 544.75,
+      "adjBuy": 676.53,
+      "adjClose": 692.07
     },
     {
       "month": "1995-07",
       "buy": 544.75,
-      "close": 562.06
+      "close": 562.06,
+      "adjBuy": 695.08,
+      "adjClose": 715.02
     },
     {
       "month": "1995-08",
       "buy": 562.06,
-      "close": 561.88
+      "close": 561.88,
+      "adjBuy": 711.95,
+      "adjClose": 716.82
     },
     {
       "month": "1995-09",
       "buy": 561.88,
-      "close": 584.41
+      "close": 584.41,
+      "adjBuy": 719.34,
+      "adjClose": 747.07
     },
     {
       "month": "1995-10",
       "buy": 584.41,
-      "close": 581.5
+      "close": 581.5,
+      "adjBuy": 743.65,
+      "adjClose": 744.4
     },
     {
       "month": "1995-11",
       "buy": 581.5,
-      "close": 605.37
+      "close": 605.37,
+      "adjBuy": 748.01,
+      "adjClose": 777.07
     },
     {
       "month": "1995-12",
       "buy": 605.37,
-      "close": 615.93
+      "close": 615.93,
+      "adjBuy": 779.15,
+      "adjClose": 792.04
     },
     {
       "month": "1996-01",
       "buy": 615.93,
-      "close": 636.02
+      "close": 636.02,
+      "adjBuy": 798.22,
+      "adjClose": 819
     },
     {
       "month": "1996-02",
       "buy": 636.02,
-      "close": 640.43
+      "close": 640.43,
+      "adjBuy": 822.3,
+      "adjClose": 826.59
     },
     {
       "month": "1996-03",
       "buy": 640.43,
-      "close": 645.5
+      "close": 645.5,
+      "adjBuy": 831.7,
+      "adjClose": 834.55
     },
     {
       "month": "1996-04",
       "buy": 645.5,
-      "close": 654.17
+      "close": 654.17,
+      "adjBuy": 845.2,
+      "adjClose": 846.85
     },
     {
       "month": "1996-05",
       "buy": 654.17,
-      "close": 669.12
+      "close": 669.12,
+      "adjBuy": 847.49,
+      "adjClose": 868.69
     },
     {
       "month": "1996-06",
       "buy": 669.12,
-      "close": 670.63
+      "close": 670.63,
+      "adjBuy": 866.83,
+      "adjClose": 872.01
     },
     {
       "month": "1996-07",
       "buy": 670.63,
-      "close": 639.95
+      "close": 639.95,
+      "adjBuy": 878.97,
+      "adjClose": 833.48
     },
     {
       "month": "1996-08",
       "buy": 639.95,
-      "close": 651.99
+      "close": 651.99,
+      "adjBuy": 846.77,
+      "adjClose": 851.06
     },
     {
       "month": "1996-09",
       "buy": 651.99,
-      "close": 687.33
+      "close": 687.33,
+      "adjBuy": 854.63,
+      "adjClose": 898.97
     },
     {
       "month": "1996-10",
       "buy": 687.31,
-      "close": 705.27
+      "close": 705.27,
+      "adjBuy": 901.29,
+      "adjClose": 923.76
     },
     {
       "month": "1996-11",
       "buy": 705.27,
-      "close": 757.02
+      "close": 757.02,
+      "adjBuy": 921.91,
+      "adjClose": 993.58
     },
     {
       "month": "1996-12",
       "buy": 757.02,
-      "close": 740.74
+      "close": 740.74,
+      "adjBuy": 993,
+      "adjClose": 973.9
     },
     {
       "month": "1997-01",
       "buy": 740.74,
-      "close": 786.16
+      "close": 786.16,
+      "adjBuy": 969.05,
+      "adjClose": 1034.74
     },
     {
       "month": "1997-02",
       "buy": 786.16,
-      "close": 790.82
+      "close": 790.82,
+      "adjBuy": 1035.59,
+      "adjClose": 1042.85
     },
     {
       "month": "1997-03",
       "buy": 790.82,
-      "close": 757.12
+      "close": 757.12,
+      "adjBuy": 1048.78,
+      "adjClose": 1000
     },
     {
       "month": "1997-04",
       "buy": 757.12,
-      "close": 801.34
+      "close": 801.34,
+      "adjBuy": 1003.33,
+      "adjClose": 1059.7
     },
     {
       "month": "1997-05",
       "buy": 801.34,
-      "close": 848.28
+      "close": 848.28,
+      "adjBuy": 1056.13,
+      "adjClose": 1124.22
     },
     {
       "month": "1997-06",
       "buy": 848.28,
-      "close": 885.14
+      "close": 885.14,
+      "adjBuy": 1121.69,
+      "adjClose": 1174.59
     },
     {
       "month": "1997-07",
       "buy": 885.14,
-      "close": 954.31
+      "close": 954.31,
+      "adjBuy": 1182.57,
+      "adjClose": 1268.05
     },
     {
       "month": "1997-08",
       "buy": 954.29,
-      "close": 899.47
+      "close": 899.47,
+      "adjBuy": 1258.59,
+      "adjClose": 1197.01
     },
     {
       "month": "1997-09",
       "buy": 899.47,
-      "close": 947.28
+      "close": 947.28,
+      "adjBuy": 1234.44,
+      "adjClose": 1262.56
     },
     {
       "month": "1997-10",
       "buy": 947.28,
-      "close": 914.62
+      "close": 914.62,
+      "adjBuy": 1273.51,
+      "adjClose": 1220.4
     },
     {
       "month": "1997-11",
       "buy": 914.62,
-      "close": 955.4
+      "close": 955.4,
+      "adjBuy": 1252.96,
+      "adjClose": 1276.89
     },
     {
       "month": "1997-12",
       "buy": 955.4,
-      "close": 970.43
+      "close": 970.43,
+      "adjBuy": 1302.82,
+      "adjClose": 1298.82
     },
     {
       "month": "1998-01",
       "buy": 970.43,
-      "close": 980.28
+      "close": 980.28,
+      "adjBuy": 1305.04,
+      "adjClose": 1313.19
     },
     {
       "month": "1998-02",
       "buy": 980.28,
-      "close": 1049.34
+      "close": 1049.34,
+      "adjBuy": 1341.32,
+      "adjClose": 1407.9
     },
     {
       "month": "1998-03",
       "buy": 1049.34,
-      "close": 1101.75
+      "close": 1101.75,
+      "adjBuy": 1405.73,
+      "adjClose": 1480
     },
     {
       "month": "1998-04",
       "buy": 1101.75,
-      "close": 1111.75
+      "close": 1111.75,
+      "adjBuy": 1488.7,
+      "adjClose": 1494.89
     },
     {
       "month": "1998-05",
       "buy": 1111.75,
-      "close": 1090.82
+      "close": 1090.82,
+      "adjBuy": 1507.33,
+      "adjClose": 1469.19
     },
     {
       "month": "1998-06",
       "buy": 1090.82,
-      "close": 1133.84
+      "close": 1133.84,
+      "adjBuy": 1469.46,
+      "adjClose": 1528.87
     },
     {
       "month": "1998-07",
       "buy": 1133.84,
-      "close": 1120.67
+      "close": 1120.67,
+      "adjBuy": 1548.77,
+      "adjClose": 1512.59
     },
     {
       "month": "1998-08",
       "buy": 1120.67,
-      "close": 957.28
+      "close": 957.28,
+      "adjBuy": 1501.53,
+      "adjClose": 1293.9
     },
     {
       "month": "1998-09",
       "buy": 957.28,
-      "close": 1017.01
+      "close": 1017.01,
+      "adjBuy": 1343.94,
+      "adjClose": 1376.79
     },
     {
       "month": "1998-10",
       "buy": 1017.01,
-      "close": 1098.67
+      "close": 1098.67,
+      "adjBuy": 1335.36,
+      "adjClose": 1488.78
     },
     {
       "month": "1998-11",
       "buy": 1098.67,
-      "close": 1163.63
+      "close": 1163.63,
+      "adjBuy": 1506.31,
+      "adjClose": 1579.02
     },
     {
       "month": "1998-12",
       "buy": 1163.63,
-      "close": 1229.23
+      "close": 1229.23,
+      "adjBuy": 1594.87,
+      "adjClose": 1670.01
     },
     {
       "month": "1999-01",
       "buy": 1229.23,
-      "close": 1279.64
+      "close": 1279.64,
+      "adjBuy": 1668.52,
+      "adjClose": 1739.84
     },
     {
       "month": "1999-02",
       "buy": 1279.64,
-      "close": 1238.33
+      "close": 1238.33,
+      "adjBuy": 1730.81,
+      "adjClose": 1685.77
     },
     {
       "month": "1999-03",
       "buy": 1238.33,
-      "close": 1286.37
+      "close": 1286.37,
+      "adjBuy": 1682.86,
+      "adjClose": 1753.21
     },
     {
       "month": "1999-04",
       "buy": 1286.37,
-      "close": 1335.18
+      "close": 1335.18,
+      "adjBuy": 1763.31,
+      "adjClose": 1821.11
     },
     {
       "month": "1999-05",
       "buy": 1335.18,
-      "close": 1301.84
+      "close": 1301.84,
+      "adjBuy": 1847.63,
+      "adjClose": 1778.1
     },
     {
       "month": "1999-06",
       "buy": 1301.84,
-      "close": 1372.71
+      "close": 1372.71,
+      "adjBuy": 1767.8,
+      "adjClose": 1876.78
     },
     {
       "month": "1999-07",
       "buy": 1372.71,
-      "close": 1328.72
+      "close": 1328.72,
+      "adjBuy": 1888.15,
+      "adjClose": 1818.18
     },
     {
       "month": "1999-08",
       "buy": 1328.72,
-      "close": 1320.41
+      "close": 1320.41,
+      "adjBuy": 1817.27,
+      "adjClose": 1809.19
     },
     {
       "month": "1999-09",
       "buy": 1320.41,
-      "close": 1282.71
+      "close": 1282.71,
+      "adjBuy": 1824.2,
+      "adjClose": 1759.59
     },
     {
       "month": "1999-10",
       "buy": 1282.71,
-      "close": 1362.93
+      "close": 1362.93,
+      "adjBuy": 1759.77,
+      "adjClose": 1870.94
     },
     {
       "month": "1999-11",
       "buy": 1362.93,
-      "close": 1388.91
+      "close": 1388.91,
+      "adjBuy": 1858.86,
+      "adjClose": 1908.97
     },
     {
       "month": "1999-12",
       "buy": 1388.91,
-      "close": 1469.25
+      "close": 1469.25,
+      "adjBuy": 1921.49,
+      "adjClose": 2021.4
     },
     {
       "month": "2000-01",
       "buy": 1469.25,
-      "close": 1394.46
+      "close": 1394.46,
+      "adjBuy": 2002.11,
+      "adjClose": 1919.84
     },
     {
       "month": "2000-02",
       "buy": 1394.46,
-      "close": 1366.42
+      "close": 1366.42,
+      "adjBuy": 1940.24,
+      "adjClose": 1883.5
     },
     {
       "month": "2000-03",
       "buy": 1366.42,
-      "close": 1498.58
+      "close": 1498.58,
+      "adjBuy": 1901.51,
+      "adjClose": 2067.76
     },
     {
       "month": "2000-04",
       "buy": 1498.58,
-      "close": 1452.43
+      "close": 1452.43,
+      "adjBuy": 2077.97,
+      "adjClose": 2005.55
     },
     {
       "month": "2000-05",
       "buy": 1452.43,
-      "close": 1420.6
+      "close": 1420.6,
+      "adjBuy": 2027.4,
+      "adjClose": 1964.4
     },
     {
       "month": "2000-06",
       "buy": 1420.6,
-      "close": 1454.6
+      "close": 1454.6,
+      "adjBuy": 2003.45,
+      "adjClose": 2012.83
     },
     {
       "month": "2000-07",
       "buy": 1454.6,
-      "close": 1430.83
+      "close": 1430.83,
+      "adjBuy": 2033.58,
+      "adjClose": 1981.36
     },
     {
       "month": "2000-08",
       "buy": 1430.83,
-      "close": 1517.68
+      "close": 1517.68,
+      "adjBuy": 1991.43,
+      "adjClose": 2104.43
     },
     {
       "month": "2000-09",
       "buy": 1517.68,
-      "close": 1436.51
+      "close": 1436.51,
+      "adjBuy": 2108.76,
+      "adjClose": 1993.33
     },
     {
       "month": "2000-10",
       "buy": 1436.52,
-      "close": 1429.4
+      "close": 1429.4,
+      "adjBuy": 1992.94,
+      "adjClose": 1984.91
     },
     {
       "month": "2000-11",
       "buy": 1429.4,
-      "close": 1314.95
+      "close": 1314.95,
+      "adjBuy": 1973.72,
+      "adjClose": 1828.42
     },
     {
       "month": "2000-12",
       "buy": 1314.95,
-      "close": 1320.28
+      "close": 1320.28,
+      "adjBuy": 1828.81,
+      "adjClose": 1837.37
     },
     {
       "month": "2001-01",
       "buy": 1320.28,
-      "close": 1366.01
+      "close": 1366.01,
+      "adjBuy": 1785.86,
+      "adjClose": 1902.55
     },
     {
       "month": "2001-02",
       "buy": 1366.01,
-      "close": 1239.94
+      "close": 1239.94,
+      "adjBuy": 1913.11,
+      "adjClose": 1729.08
     },
     {
       "month": "2001-03",
       "buy": 1239.94,
-      "close": 1160.33
+      "close": 1160.33,
+      "adjBuy": 1730.92,
+      "adjClose": 1619.54
     },
     {
       "month": "2001-04",
       "buy": 1160.33,
-      "close": 1249.46
+      "close": 1249.46,
+      "adjBuy": 1599.36,
+      "adjClose": 1745.39
     },
     {
       "month": "2001-05",
       "buy": 1249.46,
-      "close": 1255.82
+      "close": 1255.82,
+      "adjBuy": 1769.12,
+      "adjClose": 1757.09
     },
     {
       "month": "2001-06",
       "buy": 1255.82,
-      "close": 1224.38
+      "close": 1224.38,
+      "adjBuy": 1763.87,
+      "adjClose": 1714.32
     },
     {
       "month": "2001-07",
       "buy": 1224.42,
-      "close": 1211.23
+      "close": 1211.23,
+      "adjBuy": 1731.53,
+      "adjClose": 1697.45
     },
     {
       "month": "2001-08",
       "buy": 1211.23,
-      "close": 1133.58
+      "close": 1133.58,
+      "adjBuy": 1704.24,
+      "adjClose": 1591.18
     },
     {
       "month": "2001-09",
       "buy": 1133.58,
-      "close": 1040.94
+      "close": 1040.94,
+      "adjBuy": 1590.29,
+      "adjClose": 1462.69
     },
     {
       "month": "2001-10",
       "buy": 1040.94,
-      "close": 1059.78
+      "close": 1059.78,
+      "adjBuy": 1459.33,
+      "adjClose": 1490.58
     },
     {
       "month": "2001-11",
       "buy": 1059.78,
-      "close": 1139.45
+      "close": 1139.45,
+      "adjBuy": 1524.96,
+      "adjClose": 1604.92
     },
     {
       "month": "2001-12",
       "buy": 1139.45,
-      "close": 1148.08
+      "close": 1148.08,
+      "adjBuy": 1591.48,
+      "adjClose": 1618.98
     },
     {
       "month": "2002-01",
       "buy": 1148.08,
-      "close": 1130.2
+      "close": 1130.2,
+      "adjBuy": 1628.51,
+      "adjClose": 1595.35
     },
     {
       "month": "2002-02",
       "buy": 1130.2,
-      "close": 1106.73
+      "close": 1106.73,
+      "adjBuy": 1584.06,
+      "adjClose": 1564.59
     },
     {
       "month": "2002-03",
       "buy": 1106.73,
-      "close": 1147.39
+      "close": 1147.39,
+      "adjBuy": 1600.02,
+      "adjClose": 1623.43
     },
     {
       "month": "2002-04",
       "buy": 1147.39,
-      "close": 1076.92
+      "close": 1076.92,
+      "adjBuy": 1622.23,
+      "adjClose": 1525
     },
     {
       "month": "2002-05",
       "buy": 1076.92,
-      "close": 1067.14
+      "close": 1067.14,
+      "adjBuy": 1538.65,
+      "adjClose": 1513.77
     },
     {
       "month": "2002-06",
       "buy": 1067.14,
-      "close": 989.82
+      "close": 989.82,
+      "adjBuy": 1476.26,
+      "adjClose": 1405.94
     },
     {
       "month": "2002-07",
       "buy": 989.82,
-      "close": 911.62
+      "close": 911.62,
+      "adjBuy": 1375.88,
+      "adjClose": 1296.34
     },
     {
       "month": "2002-08",
       "buy": 911.62,
-      "close": 916.07
+      "close": 916.07,
+      "adjBuy": 1258.22,
+      "adjClose": 1304.86
     },
     {
       "month": "2002-09",
       "buy": 916.07,
-      "close": 815.28
+      "close": 815.28,
+      "adjBuy": 1250.68,
+      "adjClose": 1163.04
     },
     {
       "month": "2002-10",
       "buy": 815.28,
-      "close": 885.76
+      "close": 885.76,
+      "adjBuy": 1209.59,
+      "adjClose": 1265.41
     },
     {
       "month": "2002-11",
       "buy": 885.76,
-      "close": 936.31
+      "close": 936.31,
+      "adjBuy": 1287.13,
+      "adjClose": 1339.89
     },
     {
       "month": "2002-12",
       "buy": 936.31,
-      "close": 879.82
+      "close": 879.82,
+      "adjBuy": 1337.35,
+      "adjClose": 1261.18
     },
     {
       "month": "2003-01",
       "buy": 879.82,
-      "close": 855.7
+      "close": 855.7,
+      "adjBuy": 1303.17,
+      "adjClose": 1228.14
     },
     {
       "month": "2003-02",
       "buy": 855.7,
-      "close": 841.15
+      "close": 841.15,
+      "adjBuy": 1234.79,
+      "adjClose": 1209.71
     },
     {
       "month": "2003-03",
       "buy": 841.15,
-      "close": 848.18
+      "close": 848.18,
+      "adjBuy": 1200.6,
+      "adjClose": 1221.46
     },
     {
       "month": "2003-04",
       "buy": 848.18,
-      "close": 916.92
+      "close": 916.92,
+      "adjBuy": 1236.3,
+      "adjClose": 1322.07
     },
     {
       "month": "2003-05",
       "buy": 916.92,
-      "close": 963.59
+      "close": 963.59,
+      "adjBuy": 1321.39,
+      "adjClose": 1391.72
     },
     {
       "month": "2003-06",
       "buy": 963.59,
-      "close": 974.5
+      "close": 974.5,
+      "adjBuy": 1396.7,
+      "adjClose": 1409.48
     },
     {
       "month": "2003-07",
       "buy": 974.5,
-      "close": 990.31
+      "close": 990.31,
+      "adjBuy": 1421.03,
+      "adjClose": 1434.33
     },
     {
       "month": "2003-08",
       "buy": 990.31,
-      "close": 1008.01
+      "close": 1008.01,
+      "adjBuy": 1419.64,
+      "adjClose": 1462.3
     },
     {
       "month": "2003-09",
       "buy": 1008.01,
-      "close": 995.97
+      "close": 995.97,
+      "adjBuy": 1482.61,
+      "adjClose": 1446.77
     },
     {
       "month": "2003-10",
       "buy": 995.97,
-      "close": 1050.71
+      "close": 1050.71,
+      "adjBuy": 1479.23,
+      "adjClose": 1528.62
     },
     {
       "month": "2003-11",
       "buy": 1050.71,
-      "close": 1058.2
+      "close": 1058.2,
+      "adjBuy": 1540.71,
+      "adjClose": 1542.07
     },
     {
       "month": "2003-12",
       "buy": 1058.2,
-      "close": 1111.92
+      "close": 1111.92,
+      "adjBuy": 1559.5,
+      "adjClose": 1622.94
     },
     {
       "month": "2004-01",
       "buy": 1111.92,
-      "close": 1131.13
+      "close": 1131.13,
+      "adjBuy": 1618.05,
+      "adjClose": 1652.73
     },
     {
       "month": "2004-02",
       "buy": 1131.13,
-      "close": 1144.94
+      "close": 1144.94,
+      "adjBuy": 1658.79,
+      "adjClose": 1675.7
     },
     {
       "month": "2004-03",
       "buy": 1144.94,
-      "close": 1126.21
+      "close": 1126.21,
+      "adjBuy": 1691.9,
+      "adjClose": 1650.42
     },
     {
       "month": "2004-04",
       "buy": 1126.21,
-      "close": 1107.3
+      "close": 1107.3,
+      "adjBuy": 1659.16,
+      "adjClose": 1624.51
     },
     {
       "month": "2004-05",
       "buy": 1107.3,
-      "close": 1120.68
+      "close": 1120.68,
+      "adjBuy": 1639.46,
+      "adjClose": 1646.8
     },
     {
       "month": "2004-06",
       "buy": 1120.68,
-      "close": 1140.84
+      "close": 1140.84,
+      "adjBuy": 1647.57,
+      "adjClose": 1678.83
     },
     {
       "month": "2004-07",
       "buy": 1140.84,
-      "close": 1101.72
+      "close": 1101.72,
+      "adjBuy": 1661.53,
+      "adjClose": 1623.26
     },
     {
       "month": "2004-08",
       "buy": 1101.72,
-      "close": 1104.24
+      "close": 1104.24,
+      "adjBuy": 1630.48,
+      "adjClose": 1629.83
     },
     {
       "month": "2004-09",
       "buy": 1104.24,
-      "close": 1114.58
+      "close": 1114.58,
+      "adjBuy": 1632.82,
+      "adjClose": 1647.48
     },
     {
       "month": "2004-10",
       "buy": 1114.58,
-      "close": 1130.2
+      "close": 1130.2,
+      "adjBuy": 1672.49,
+      "adjClose": 1672.65
     },
     {
       "month": "2004-11",
       "buy": 1130.2,
-      "close": 1173.82
+      "close": 1173.82,
+      "adjBuy": 1673.11,
+      "adjClose": 1740.33
     },
     {
       "month": "2004-12",
       "buy": 1173.78,
-      "close": 1211.92
+      "close": 1211.92,
+      "adjBuy": 1766.9,
+      "adjClose": 1799.55
     },
     {
       "month": "2005-01",
       "buy": 1211.92,
-      "close": 1181.27
+      "close": 1181.27,
+      "adjBuy": 1784.96,
+      "adjClose": 1755.68
     },
     {
       "month": "2005-02",
       "buy": 1181.27,
-      "close": 1203.6
+      "close": 1203.6,
+      "adjBuy": 1767.79,
+      "adjClose": 1792.63
     },
     {
       "month": "2005-03",
       "buy": 1203.6,
-      "close": 1180.59
+      "close": 1180.59,
+      "adjBuy": 1802.79,
+      "adjClose": 1760.89
     },
     {
       "month": "2005-04",
       "buy": 1180.59,
-      "close": 1156.85
+      "close": 1156.85,
+      "adjBuy": 1749.45,
+      "adjClose": 1727.49
     },
     {
       "month": "2005-05",
       "buy": 1156.85,
-      "close": 1191.5
+      "close": 1191.5,
+      "adjBuy": 1735.43,
+      "adjClose": 1782.46
     },
     {
       "month": "2005-06",
       "buy": 1191.5,
-      "close": 1191.33
+      "close": 1191.33,
+      "adjBuy": 1799.15,
+      "adjClose": 1784.99
     },
     {
       "month": "2005-07",
       "buy": 1191.33,
-      "close": 1234.18
+      "close": 1234.18,
+      "adjBuy": 1789.85,
+      "adjClose": 1851.37
     },
     {
       "month": "2005-08",
       "buy": 1234.18,
-      "close": 1220.33
+      "close": 1220.33,
+      "adjBuy": 1853.13,
+      "adjClose": 1834.48
     },
     {
       "month": "2005-09",
       "buy": 1220.33,
-      "close": 1228.81
+      "close": 1228.81,
+      "adjBuy": 1836.37,
+      "adjClose": 1849.33
     },
     {
       "month": "2005-10",
       "buy": 1228.81,
-      "close": 1207.01
+      "close": 1207.01,
+      "adjBuy": 1846.17,
+      "adjClose": 1818.5
     },
     {
       "month": "2005-11",
       "buy": 1207.01,
-      "close": 1249.48
+      "close": 1249.48,
+      "adjBuy": 1812.11,
+      "adjClose": 1887.28
     },
     {
       "month": "2005-12",
       "buy": 1249.48,
-      "close": 1248.29
+      "close": 1248.29,
+      "adjBuy": 1910.23,
+      "adjClose": 1887.94
     },
     {
       "month": "2006-01",
       "buy": 1248.29,
-      "close": 1280.08
+      "close": 1280.08,
+      "adjBuy": 1918.96,
+      "adjClose": 1937.93
     },
     {
       "month": "2006-02",
       "buy": 1280.08,
-      "close": 1280.66
+      "close": 1280.66,
+      "adjBuy": 1941.75,
+      "adjClose": 1943.19
     },
     {
       "month": "2006-03",
       "buy": 1280.66,
-      "close": 1294.87
+      "close": 1294.87,
+      "adjBuy": 1959.77,
+      "adjClose": 1967.38
     },
     {
       "month": "2006-04",
       "buy": 1302.88,
-      "close": 1310.61
+      "close": 1310.61,
+      "adjBuy": 1971.93,
+      "adjClose": 1993.79
     },
     {
       "month": "2006-05",
       "buy": 1310.61,
-      "close": 1270.09
+      "close": 1270.09,
+      "adjBuy": 1985.55,
+      "adjClose": 1936.41
     },
     {
       "month": "2006-06",
       "buy": 1270.05,
-      "close": 1270.2
+      "close": 1270.2,
+      "adjBuy": 1960.28,
+      "adjClose": 1939.03
     },
     {
       "month": "2006-07",
       "buy": 1270.06,
-      "close": 1276.66
+      "close": 1276.66,
+      "adjBuy": 1954.49,
+      "adjClose": 1951
     },
     {
       "month": "2006-08",
       "buy": 1278.53,
-      "close": 1303.82
+      "close": 1303.82,
+      "adjBuy": 1942.22,
+      "adjClose": 1997.42
     },
     {
       "month": "2006-09",
       "buy": 1303.8,
-      "close": 1335.85
+      "close": 1335.85,
+      "adjBuy": 2008.47,
+      "adjClose": 2048.89
     },
     {
       "month": "2006-10",
       "buy": 1335.82,
-      "close": 1377.94
+      "close": 1377.94,
+      "adjBuy": 2041.99,
+      "adjClose": 2115.65
     },
     {
       "month": "2006-11",
       "buy": 1377.76,
-      "close": 1400.63
+      "close": 1400.63,
+      "adjBuy": 2100.37,
+      "adjClose": 2155.89
     },
     {
       "month": "2006-12",
       "buy": 1400.63,
-      "close": 1418.3
+      "close": 1418.3,
+      "adjBuy": 2149.85,
+      "adjClose": 2186.13
     },
     {
       "month": "2007-01",
       "buy": 1418.03,
-      "close": 1438.24
+      "close": 1438.24,
+      "adjBuy": 2183.92,
+      "adjClose": 2219.19
     },
     {
       "month": "2007-02",
       "buy": 1437.9,
-      "close": 1406.82
+      "close": 1406.82,
+      "adjBuy": 2231.61,
+      "adjClose": 2175.78
     },
     {
       "month": "2007-03",
       "buy": 1406.8,
-      "close": 1420.86
+      "close": 1420.86,
+      "adjBuy": 2170.17,
+      "adjClose": 2200.12
     },
     {
       "month": "2007-04",
       "buy": 1420.83,
-      "close": 1482.37
+      "close": 1482.37,
+      "adjBuy": 2205.85,
+      "adjClose": 2297.58
     },
     {
       "month": "2007-05",
       "buy": 1482.37,
-      "close": 1530.62
+      "close": 1530.62,
+      "adjBuy": 2303.68,
+      "adjClose": 2377.75
     },
     {
       "month": "2007-06",
       "buy": 1530.62,
-      "close": 1503.35
+      "close": 1503.35,
+      "adjBuy": 2386.63,
+      "adjClose": 2338.25
     },
     {
       "month": "2007-07",
       "buy": 1504.66,
-      "close": 1455.27
+      "close": 1455.27,
+      "adjBuy": 2363.28,
+      "adjClose": 2265.75
     },
     {
       "month": "2007-08",
       "buy": 1455.18,
-      "close": 1473.99
+      "close": 1473.99,
+      "adjBuy": 2282.3,
+      "adjClose": 2299.71
     },
     {
       "month": "2007-09",
       "buy": 1473.96,
-      "close": 1526.75
+      "close": 1526.75,
+      "adjBuy": 2323.83,
+      "adjClose": 2385.72
     },
     {
       "month": "2007-10",
       "buy": 1527.29,
-      "close": 1549.38
+      "close": 1549.38,
+      "adjBuy": 2417.44,
+      "adjClose": 2423.67
     },
     {
       "month": "2007-11",
       "buy": 1545.79,
-      "close": 1481.14
+      "close": 1481.14,
+      "adjBuy": 2360.21,
+      "adjClose": 2322.34
     },
     {
       "month": "2007-12",
       "buy": 1479.63,
-      "close": 1468.36
+      "close": 1468.36,
+      "adjBuy": 2308.74,
+      "adjClose": 2306.23
     },
     {
       "month": "2008-01",
       "buy": 1467.97,
-      "close": 1378.55
+      "close": 1378.55,
+      "adjBuy": 2273.41,
+      "adjClose": 2167.9
     },
     {
       "month": "2008-02",
       "buy": 1378.6,
-      "close": 1330.63
+      "close": 1330.63,
+      "adjBuy": 2194.43,
+      "adjClose": 2097.48
     },
     {
       "month": "2008-03",
       "buy": 1330.45,
-      "close": 1322.7
+      "close": 1322.7,
+      "adjBuy": 2098.64,
+      "adjClose": 2088.42
     },
     {
       "month": "2008-04",
       "buy": 1326.41,
-      "close": 1385.59
+      "close": 1385.59,
+      "adjBuy": 2163.38,
+      "adjClose": 2190.13
     },
     {
       "month": "2008-05",
       "buy": 1385.97,
-      "close": 1400.38
+      "close": 1400.38,
+      "adjBuy": 2228.09,
+      "adjClose": 2218.5
     },
     {
       "month": "2008-06",
       "buy": 1399.62,
-      "close": 1280
+      "close": 1280,
+      "adjBuy": 2195.27,
+      "adjClose": 2031.47
     },
     {
       "month": "2008-07",
       "buy": 1276.69,
-      "close": 1267.38
+      "close": 1267.38,
+      "adjBuy": 2039.66,
+      "adjClose": 2014.39
     },
     {
       "month": "2008-08",
       "buy": 1269.42,
-      "close": 1282.83
+      "close": 1282.83,
+      "adjBuy": 2003.16,
+      "adjClose": 2043.53
     },
     {
       "month": "2008-09",
       "buy": 1287.83,
-      "close": 1166.36
+      "close": 1166.36,
+      "adjBuy": 2035.24,
+      "adjClose": 1861.44
     },
     {
       "month": "2008-10",
       "buy": 1164.17,
-      "close": 968.75
+      "close": 968.75,
+      "adjBuy": 1853.26,
+      "adjClose": 1548.81
     },
     {
       "month": "2008-11",
       "buy": 968.67,
-      "close": 896.24
+      "close": 896.24,
+      "adjBuy": 1544.91,
+      "adjClose": 1437.68
     },
     {
       "month": "2008-12",
       "buy": 888.61,
-      "close": 903.25
+      "close": 903.25,
+      "adjBuy": 1309.39,
+      "adjClose": 1452.98
     },
     {
       "month": "2009-01",
       "buy": 902.99,
-      "close": 825.88
+      "close": 825.88,
+      "adjBuy": 1499.17,
+      "adjClose": 1330.51
     },
     {
       "month": "2009-02",
       "buy": 823.09,
-      "close": 735.09
+      "close": 735.09,
+      "adjBuy": 1329.81,
+      "adjClose": 1188.84
     },
     {
       "month": "2009-03",
       "buy": 729.57,
-      "close": 797.87
+      "close": 797.87,
+      "adjBuy": 1133.43,
+      "adjClose": 1292.98
     },
     {
       "month": "2009-04",
       "buy": 793.59,
-      "close": 872.81
+      "close": 872.81,
+      "adjBuy": 1293.23,
+      "adjClose": 1416.73
     },
     {
       "month": "2009-05",
       "buy": 872.74,
-      "close": 919.14
+      "close": 919.14,
+      "adjBuy": 1416.75,
+      "adjClose": 1495.97
     },
     {
       "month": "2009-06",
       "buy": 923.26,
-      "close": 919.32
+      "close": 919.32,
+      "adjBuy": 1495.97,
+      "adjClose": 1498.94
     },
     {
       "month": "2009-07",
       "buy": 920.82,
-      "close": 987.48
+      "close": 987.48,
+      "adjBuy": 1499.11,
+      "adjClose": 1612.31
     },
     {
       "month": "2009-08",
       "buy": 990.22,
-      "close": 1020.62
+      "close": 1020.62,
+      "adjBuy": 1612.32,
+      "adjClose": 1670.52
     },
     {
       "month": "2009-09",
       "buy": 1019.52,
-      "close": 1057.08
+      "close": 1057.08,
+      "adjBuy": 1670.59,
+      "adjClose": 1732.86
     },
     {
       "month": "2009-10",
       "buy": 1054.91,
-      "close": 1036.19
+      "close": 1036.19,
+      "adjBuy": 1732.68,
+      "adjClose": 1700.67
     },
     {
       "month": "2009-11",
       "buy": 1036.18,
-      "close": 1095.63
+      "close": 1095.63,
+      "adjBuy": 1700.72,
+      "adjClose": 1802.68
     },
     {
       "month": "2009-12",
       "buy": 1098.89,
-      "close": 1115.1
+      "close": 1115.1,
+      "adjBuy": 1803.1,
+      "adjClose": 1837.5
     },
     {
       "month": "2010-01",
       "buy": 1116.56,
-      "close": 1073.87
+      "close": 1073.87,
+      "adjBuy": 1867.06,
+      "adjClose": 1771.4
     },
     {
       "month": "2010-02",
       "buy": 1073.89,
-      "close": 1104.49
+      "close": 1104.49,
+      "adjBuy": 1796.67,
+      "adjClose": 1826.27
     },
     {
       "month": "2010-03",
       "buy": 1105.36,
-      "close": 1169.43
+      "close": 1169.43,
+      "adjBuy": 1826.27,
+      "adjClose": 1936.48
     },
     {
       "month": "2010-04",
       "buy": 1171.23,
-      "close": 1186.69
+      "close": 1186.69,
+      "adjBuy": 1938.08,
+      "adjClose": 1967.05
     },
     {
       "month": "2010-05",
       "buy": 1188.58,
-      "close": 1089.41
+      "close": 1089.41,
+      "adjBuy": 1967.51,
+      "adjClose": 1809.98
     },
     {
       "month": "2010-06",
       "buy": 1087.3,
-      "close": 1030.71
+      "close": 1030.71,
+      "adjBuy": 1810.01,
+      "adjClose": 1715.23
     },
     {
       "month": "2010-07",
       "buy": 1031.1,
-      "close": 1101.6
+      "close": 1101.6,
+      "adjBuy": 1715.23,
+      "adjClose": 1835.4
     },
     {
       "month": "2010-08",
       "buy": 1107.53,
-      "close": 1049.33
+      "close": 1049.33,
+      "adjBuy": 1837.69,
+      "adjClose": 1752.55
     },
     {
       "month": "2010-09",
       "buy": 1049.72,
-      "close": 1141.2
+      "close": 1141.2,
+      "adjBuy": 1754.86,
+      "adjClose": 1908.95
     },
     {
       "month": "2010-10",
       "buy": 1143.49,
-      "close": 1183.26
+      "close": 1183.26,
+      "adjBuy": 1911.1,
+      "adjClose": 1981.59
     },
     {
       "month": "2010-11",
       "buy": 1185.71,
-      "close": 1180.55
+      "close": 1180.55,
+      "adjBuy": 1983.55,
+      "adjClose": 1981.84
     },
     {
       "month": "2010-12",
       "buy": 1186.6,
-      "close": 1257.64
+      "close": 1257.64,
+      "adjBuy": 1986.35,
+      "adjClose": 2114.29
     },
     {
       "month": "2011-01",
       "buy": 1257.62,
-      "close": 1286.12
+      "close": 1286.12,
+      "adjBuy": 2115.97,
+      "adjClose": 2164.4
     },
     {
       "month": "2011-02",
       "buy": 1289.14,
-      "close": 1327.22
+      "close": 1327.22,
+      "adjBuy": 2165.77,
+      "adjClose": 2238.55
     },
     {
       "month": "2011-03",
       "buy": 1328.64,
-      "close": 1325.83
+      "close": 1325.83,
+      "adjBuy": 2239.12,
+      "adjClose": 2239.44
     },
     {
       "month": "2011-04",
       "buy": 1329.48,
-      "close": 1363.61
+      "close": 1363.61,
+      "adjBuy": 2239.45,
+      "adjClose": 2305.76
     },
     {
       "month": "2011-05",
       "buy": 1365.21,
-      "close": 1345.2
+      "close": 1345.2,
+      "adjBuy": 2305.76,
+      "adjClose": 2279.66
     },
     {
       "month": "2011-06",
       "buy": 1345.2,
-      "close": 1320.64
+      "close": 1320.64,
+      "adjBuy": 2279.66,
+      "adjClose": 2241.66
     },
     {
       "month": "2011-07",
       "buy": 1320.64,
-      "close": 1292.28
+      "close": 1292.28,
+      "adjBuy": 2241.66,
+      "adjClose": 2196.08
     },
     {
       "month": "2011-08",
       "buy": 1292.59,
-      "close": 1218.89
+      "close": 1218.89,
+      "adjBuy": 2196.6,
+      "adjClose": 2076.78
     },
     {
       "month": "2011-09",
       "buy": 1219.12,
-      "close": 1131.42
+      "close": 1131.42,
+      "adjBuy": 2077.16,
+      "adjClose": 1930.79
     },
     {
       "month": "2011-10",
       "buy": 1131.21,
-      "close": 1253.3
+      "close": 1253.3,
+      "adjBuy": 1930.43,
+      "adjClose": 2141.81
     },
     {
       "month": "2011-11",
       "buy": 1251,
-      "close": 1246.96
+      "close": 1246.96,
+      "adjBuy": 2137.88,
+      "adjClose": 2137.08
     },
     {
       "month": "2011-12",
       "buy": 1246.91,
-      "close": 1257.6
+      "close": 1257.6,
+      "adjBuy": 2137.08,
+      "adjClose": 2158.94
     },
     {
       "month": "2012-01",
       "buy": 1258.86,
-      "close": 1312.41
+      "close": 1312.41,
+      "adjBuy": 2158.93,
+      "adjClose": 2255.69
     },
     {
       "month": "2012-02",
       "buy": 1312.45,
-      "close": 1365.68
+      "close": 1365.68,
+      "adjBuy": 2255.76,
+      "adjClose": 2353.23
     },
     {
       "month": "2012-03",
       "buy": 1365.9,
-      "close": 1408.47
+      "close": 1408.47,
+      "adjBuy": 2353.23,
+      "adjClose": 2430.67
     },
     {
       "month": "2012-04",
       "buy": 1408.47,
-      "close": 1397.91
+      "close": 1397.91,
+      "adjBuy": 2430.68,
+      "adjClose": 2415.42
     },
     {
       "month": "2012-05",
       "buy": 1397.86,
-      "close": 1310.33
+      "close": 1310.33,
+      "adjBuy": 2415.41,
+      "adjClose": 2270.25
     },
     {
       "month": "2012-06",
       "buy": 1309.87,
-      "close": 1362.16
+      "close": 1362.16,
+      "adjBuy": 2270.25,
+      "adjClose": 2363.79
     },
     {
       "month": "2012-07",
       "buy": 1362.33,
-      "close": 1379.32
+      "close": 1379.32,
+      "adjBuy": 2364.09,
+      "adjClose": 2396.62
     },
     {
       "month": "2012-08",
       "buy": 1379.32,
-      "close": 1406.58
+      "close": 1406.58,
+      "adjBuy": 2396.61,
+      "adjClose": 2450.6
     },
     {
       "month": "2012-09",
       "buy": 1406.54,
-      "close": 1440.67
+      "close": 1440.67,
+      "adjBuy": 2450.54,
+      "adjClose": 2513.93
     },
     {
       "month": "2012-10",
       "buy": 1440.9,
-      "close": 1412.16
+      "close": 1412.16,
+      "adjBuy": 2514.32,
+      "adjClose": 2467.51
     },
     {
       "month": "2012-11",
       "buy": 1412.2,
-      "close": 1416.18
+      "close": 1416.18,
+      "adjBuy": 2467.51,
+      "adjClose": 2481.82
     },
     {
       "month": "2012-12",
       "buy": 1416.34,
-      "close": 1426.19
+      "close": 1426.19,
+      "adjBuy": 2481.82,
+      "adjClose": 2504.44
     },
     {
       "month": "2013-01",
       "buy": 1426.19,
-      "close": 1498.11
+      "close": 1498.11,
+      "adjBuy": 2504.45,
+      "adjClose": 2634.16
     },
     {
       "month": "2013-02",
       "buy": 1498.11,
-      "close": 1514.68
+      "close": 1514.68,
+      "adjBuy": 2634.16,
+      "adjClose": 2669.92
     },
     {
       "month": "2013-03",
       "buy": 1514.68,
-      "close": 1569.19
+      "close": 1569.19,
+      "adjBuy": 2669.92,
+      "adjClose": 2770.05
     },
     {
       "month": "2013-04",
       "buy": 1569.18,
-      "close": 1597.57
+      "close": 1597.57,
+      "adjBuy": 2770.06,
+      "adjClose": 2823.42
     },
     {
       "month": "2013-05",
       "buy": 1597.55,
-      "close": 1630.74
+      "close": 1630.74,
+      "adjBuy": 2823.43,
+      "adjClose": 2889.46
     },
     {
       "month": "2013-06",
       "buy": 1631.71,
-      "close": 1606.28
+      "close": 1606.28,
+      "adjBuy": 2891.18,
+      "adjClose": 2850.66
     },
     {
       "month": "2013-07",
       "buy": 1609.78,
-      "close": 1685.73
+      "close": 1685.73,
+      "adjBuy": 2856.88,
+      "adjClose": 2995.72
     },
     {
       "month": "2013-08",
       "buy": 1689.42,
-      "close": 1632.97
+      "close": 1632.97,
+      "adjBuy": 3002.58,
+      "adjClose": 2908.96
     },
     {
       "month": "2013-09",
       "buy": 1635.95,
-      "close": 1681.55
+      "close": 1681.55,
+      "adjBuy": 2914.42,
+      "adjClose": 3000.18
     },
     {
       "month": "2013-10",
       "buy": 1682.41,
-      "close": 1756.54
+      "close": 1756.54,
+      "adjBuy": 3001.92,
+      "adjClose": 3138.09
     },
     {
       "month": "2013-11",
       "buy": 1758.7,
-      "close": 1805.81
+      "close": 1805.81,
+      "adjBuy": 3141.95,
+      "adjClose": 3233.72
     },
     {
       "month": "2013-12",
       "buy": 1806.55,
-      "close": 1848.36
+      "close": 1848.36,
+      "adjBuy": 3235.18,
+      "adjClose": 3315.59
     },
     {
       "month": "2014-01",
       "buy": 1845.86,
-      "close": 1782.59
+      "close": 1782.59,
+      "adjBuy": 3311.58,
+      "adjClose": 3200.95
     },
     {
       "month": "2014-02",
       "buy": 1782.68,
-      "close": 1859.45
+      "close": 1859.45,
+      "adjBuy": 3201.12,
+      "adjClose": 3347.38
     },
     {
       "month": "2014-03",
       "buy": 1857.68,
-      "close": 1872.34
+      "close": 1872.34,
+      "adjBuy": 3344.36,
+      "adjClose": 3375.51
     },
     {
       "month": "2014-04",
       "buy": 1873.96,
-      "close": 1883.95
+      "close": 1883.95,
+      "adjBuy": 3378.66,
+      "adjClose": 3400.46
     },
     {
       "month": "2014-05",
       "buy": 1884.39,
-      "close": 1923.57
+      "close": 1923.57,
+      "adjBuy": 3401.48,
+      "adjClose": 3480.29
     },
     {
       "month": "2014-06",
       "buy": 1923.87,
-      "close": 1960.23
+      "close": 1960.23,
+      "adjBuy": 3481.15,
+      "adjClose": 3552.18
     },
     {
       "month": "2014-07",
       "buy": 1962.29,
-      "close": 1930.67
+      "close": 1930.67,
+      "adjBuy": 3556.56,
+      "adjClose": 3503.19
     },
     {
       "month": "2014-08",
       "buy": 1929.8,
-      "close": 2003.37
+      "close": 2003.37,
+      "adjBuy": 3501.61,
+      "adjClose": 3643.33
     },
     {
       "month": "2014-09",
       "buy": 2004.07,
-      "close": 1972.29
+      "close": 1972.29,
+      "adjBuy": 3644.77,
+      "adjClose": 3592.25
     },
     {
       "month": "2014-10",
       "buy": 1971.44,
-      "close": 2018.05
+      "close": 2018.05,
+      "adjBuy": 3591.02,
+      "adjClose": 3679.99
     },
     {
       "month": "2014-11",
       "buy": 2018.21,
-      "close": 2067.56
+      "close": 2067.56,
+      "adjBuy": 3680.31,
+      "adjClose": 3778.96
     },
     {
       "month": "2014-12",
       "buy": 2065.78,
-      "close": 2058.9
+      "close": 2058.9,
+      "adjBuy": 3775.87,
+      "adjClose": 3769.44
     },
     {
       "month": "2015-01",
       "buy": 2058.9,
-      "close": 1994.99
+      "close": 1994.99,
+      "adjBuy": 3776.49,
+      "adjClose": 3656.28
     },
     {
       "month": "2015-02",
       "buy": 1996.67,
-      "close": 2104.5
+      "close": 2104.5,
+      "adjBuy": 3659.45,
+      "adjClose": 3866.42
     },
     {
       "month": "2015-03",
       "buy": 2105.23,
-      "close": 2067.89
+      "close": 2067.89,
+      "adjBuy": 3867.98,
+      "adjClose": 3805.27
     },
     {
       "month": "2015-04",
       "buy": 2067.63,
-      "close": 2085.51
+      "close": 2085.51,
+      "adjBuy": 3805.27,
+      "adjClose": 3841.78
     },
     {
       "month": "2015-05",
       "buy": 2087.38,
-      "close": 2107.39
+      "close": 2107.39,
+      "adjBuy": 3845.23,
+      "adjClose": 3891.18
     },
     {
       "month": "2015-06",
       "buy": 2108.64,
-      "close": 2063.11
+      "close": 2063.11,
+      "adjBuy": 3893.88,
+      "adjClose": 3815.85
     },
     {
       "month": "2015-07",
       "buy": 2067,
-      "close": 2103.84
+      "close": 2103.84,
+      "adjBuy": 3823.98,
+      "adjClose": 3895.8
     },
     {
       "month": "2015-08",
       "buy": 2104.49,
-      "close": 1972.18
+      "close": 1972.18,
+      "adjBuy": 3897.01,
+      "adjClose": 3660.75
     },
     {
       "month": "2015-09",
       "buy": 1970.09,
-      "close": 1920.03
+      "close": 1920.03,
+      "adjBuy": 3657.04,
+      "adjClose": 3570.17
     },
     {
       "month": "2015-10",
       "buy": 1919.65,
-      "close": 2079.36
+      "close": 2079.36,
+      "adjBuy": 3569.72,
+      "adjClose": 3871.33
     },
     {
       "month": "2015-11",
       "buy": 2080.76,
-      "close": 2080.41
+      "close": 2080.41,
+      "adjBuy": 3873.94,
+      "adjClose": 3882.84
     },
     {
       "month": "2015-12",
       "buy": 2082.93,
-      "close": 2043.94
+      "close": 2043.94,
+      "adjBuy": 3887.86,
+      "adjClose": 3821.6
     },
     {
       "month": "2016-01",
       "buy": 2038.2,
-      "close": 1940.24
+      "close": 1940.24,
+      "adjBuy": 3811.74,
+      "adjClose": 3631.96
     },
     {
       "month": "2016-02",
       "buy": 1936.94,
-      "close": 1932.23
+      "close": 1932.23,
+      "adjBuy": 3625.89,
+      "adjClose": 3627.06
     },
     {
       "month": "2016-03",
       "buy": 1937.09,
-      "close": 2059.74
+      "close": 2059.74,
+      "adjBuy": 3636.25,
+      "adjClose": 3873.11
     },
     {
       "month": "2016-04",
       "buy": 2056.62,
-      "close": 2065.3
+      "close": 2065.3,
+      "adjBuy": 3867.28,
+      "adjClose": 3888.13
     },
     {
       "month": "2016-05",
       "buy": 2067.17,
-      "close": 2096.95
+      "close": 2096.95,
+      "adjBuy": 3891.68,
+      "adjClose": 3957.95
     },
     {
       "month": "2016-06",
       "buy": 2093.94,
-      "close": 2098.86
+      "close": 2098.86,
+      "adjBuy": 3952.93,
+      "adjClose": 3968.21
     },
     {
       "month": "2016-07",
       "buy": 2099.34,
-      "close": 2173.6
+      "close": 2173.6,
+      "adjBuy": 3969.85,
+      "adjClose": 4114.51
     },
     {
       "month": "2016-08",
       "buy": 2173.15,
-      "close": 2170.95
+      "close": 2170.95,
+      "adjBuy": 4113.66,
+      "adjClose": 4120.29
     },
     {
       "month": "2016-09",
       "buy": 2171.33,
-      "close": 2168.27
+      "close": 2168.27,
+      "adjBuy": 4121.06,
+      "adjClose": 4121.06
     },
     {
       "month": "2016-10",
       "buy": 2164.33,
-      "close": 2126.15
+      "close": 2126.15,
+      "adjBuy": 4114.09,
+      "adjClose": 4045.89
     },
     {
       "month": "2016-11",
       "buy": 2128.68,
-      "close": 2198.81
+      "close": 2198.81,
+      "adjBuy": 4050.74,
+      "adjClose": 4195.73
     },
     {
       "month": "2016-12",
       "buy": 2200.17,
-      "close": 2238.83
+      "close": 2238.83,
+      "adjBuy": 4198.49,
+      "adjClose": 4278.66
     },
     {
       "month": "2017-01",
       "buy": 2251.57,
-      "close": 2278.87
+      "close": 2278.87,
+      "adjBuy": 4303.12,
+      "adjClose": 4359.81
     },
     {
       "month": "2017-02",
       "buy": 2285.59,
-      "close": 2363.64
+      "close": 2363.64,
+      "adjBuy": 4373.65,
+      "adjClose": 4532.93
     },
     {
       "month": "2017-03",
       "buy": 2380.13,
-      "close": 2362.72
+      "close": 2362.72,
+      "adjBuy": 4565.38,
+      "adjClose": 4538.21
     },
     {
       "month": "2017-04",
       "buy": 2362.34,
-      "close": 2384.2
+      "close": 2384.2,
+      "adjBuy": 4537.71,
+      "adjClose": 4584.82
     },
     {
       "month": "2017-05",
       "buy": 2388.5,
-      "close": 2411.8
+      "close": 2411.8,
+      "adjBuy": 4593.11,
+      "adjClose": 4649.34
     },
     {
       "month": "2017-06",
       "buy": 2415.65,
-      "close": 2423.41
+      "close": 2423.41,
+      "adjBuy": 4657.33,
+      "adjClose": 4678.36
     },
     {
       "month": "2017-07",
       "buy": 2431.39,
-      "close": 2470.3
+      "close": 2470.3,
+      "adjBuy": 4694.19,
+      "adjClose": 4774.56
     },
     {
       "month": "2017-08",
       "buy": 2477.1,
-      "close": 2471.65
+      "close": 2471.65,
+      "adjBuy": 4787.73,
+      "adjClose": 4789.18
     },
     {
       "month": "2017-09",
       "buy": 2474.42,
-      "close": 2519.36
+      "close": 2519.36,
+      "adjBuy": 4794.86,
+      "adjClose": 4887.97
     },
     {
       "month": "2017-10",
       "buy": 2521.2,
-      "close": 2575.26
+      "close": 2575.26,
+      "adjBuy": 4891.56,
+      "adjClose": 5002.03
     },
     {
       "month": "2017-11",
       "buy": 2583.21,
-      "close": 2647.58
+      "close": 2647.58,
+      "adjBuy": 5017.47,
+      "adjClose": 5155.44
     },
     {
       "month": "2017-12",
       "buy": 2645.1,
-      "close": 2673.61
+      "close": 2673.61,
+      "adjBuy": 5150.83,
+      "adjClose": 5212.76
     },
     {
       "month": "2018-01",
       "buy": 2683.73,
-      "close": 2823.81
+      "close": 2823.81,
+      "adjBuy": 5232.72,
+      "adjClose": 5511.21
     },
     {
       "month": "2018-02",
       "buy": 2816.45,
-      "close": 2713.83
+      "close": 2713.83,
+      "adjBuy": 5497.92,
+      "adjClose": 5308.09
     },
     {
       "month": "2018-03",
       "buy": 2715.22,
-      "close": 2640.87
+      "close": 2640.87,
+      "adjBuy": 5311.62,
+      "adjClose": 5173.19
     },
     {
       "month": "2018-04",
       "buy": 2633.45,
-      "close": 2648.05
+      "close": 2648.05,
+      "adjBuy": 5158.7,
+      "adjClose": 5193.04
     },
     {
       "month": "2018-05",
       "buy": 2642.96,
-      "close": 2705.27
+      "close": 2705.27,
+      "adjBuy": 5184.42,
+      "adjClose": 5318.1
     },
     {
       "month": "2018-06",
       "buy": 2718.7,
-      "close": 2718.37
+      "close": 2718.37,
+      "adjBuy": 5344.99,
+      "adjClose": 5350.83
     },
     {
       "month": "2018-07",
       "buy": 2704.95,
-      "close": 2816.29
+      "close": 2816.29,
+      "adjBuy": 5324.65,
+      "adjClose": 5549.96
     },
     {
       "month": "2018-08",
       "buy": 2821.17,
-      "close": 2901.52
+      "close": 2901.52,
+      "adjBuy": 5559.58,
+      "adjClose": 5730.8
     },
     {
       "month": "2018-09",
       "buy": 2896.96,
-      "close": 2913.98
+      "close": 2913.98,
+      "adjBuy": 5722.32,
+      "adjClose": 5763.42
     },
     {
       "month": "2018-10",
       "buy": 2926.29,
-      "close": 2711.74
+      "close": 2711.74,
+      "adjBuy": 5787.81,
+      "adjClose": 5369.49
     },
     {
       "month": "2018-11",
       "buy": 2717.58,
-      "close": 2760.17
+      "close": 2760.17,
+      "adjBuy": 5381.2,
+      "adjClose": 5478.91
     },
     {
       "month": "2018-12",
       "buy": 2790.5,
-      "close": 2506.85
+      "close": 2506.85,
+      "adjBuy": 5539.12,
+      "adjClose": 4984.22
     },
     {
       "month": "2019-01",
       "buy": 2476.96,
-      "close": 2704.1
+      "close": 2704.1,
+      "adjBuy": 4924.81,
+      "adjClose": 5383.63
     },
     {
       "month": "2019-02",
       "buy": 2702.32,
-      "close": 2784.49
+      "close": 2784.49,
+      "adjBuy": 5380.81,
+      "adjClose": 5556.49
     },
     {
       "month": "2019-03",
       "buy": 2798.22,
-      "close": 2834.4
+      "close": 2834.4,
+      "adjBuy": 5584.19,
+      "adjClose": 5664.46
     },
     {
       "month": "2019-04",
       "buy": 2848.63,
-      "close": 2945.83
+      "close": 2945.83,
+      "adjBuy": 5692.95,
+      "adjClose": 5893.81
     },
     {
       "month": "2019-05",
       "buy": 2952.33,
-      "close": 2752.06
+      "close": 2752.06,
+      "adjBuy": 5906.87,
+      "adjClose": 5519.27
     },
     {
       "month": "2019-06",
       "buy": 2751.53,
-      "close": 2941.76
+      "close": 2941.76,
+      "adjBuy": 5518.27,
+      "adjClose": 5908.25
     },
     {
       "month": "2019-07",
       "buy": 2971.41,
-      "close": 2980.38
+      "close": 2980.38,
+      "adjBuy": 5953.63,
+      "adjClose": 5993.17
     },
     {
       "month": "2019-08",
       "buy": 2980.32,
-      "close": 2926.46
+      "close": 2926.46,
+      "adjBuy": 5993.64,
+      "adjClose": 5898.23
     },
     {
       "month": "2019-09",
       "buy": 2909.01,
-      "close": 2976.74
+      "close": 2976.74,
+      "adjBuy": 5863.47,
+      "adjClose": 6008.59
     },
     {
       "month": "2019-10",
       "buy": 2983.69,
-      "close": 3037.56
+      "close": 3037.56,
+      "adjBuy": 6022.89,
+      "adjClose": 6138.73
     },
     {
       "month": "2019-11",
       "buy": 3050.72,
-      "close": 3140.98
+      "close": 3140.98,
+      "adjBuy": 6165.86,
+      "adjClose": 6361.56
     },
     {
       "month": "2019-12",
       "buy": 3143.85,
-      "close": 3230.78
+      "close": 3230.78,
+      "adjBuy": 6367.59,
+      "adjClose": 6553.57
     },
     {
       "month": "2020-01",
       "buy": 3244.67,
-      "close": 3225.52
+      "close": 3225.52,
+      "adjBuy": 6582.55,
+      "adjClose": 6551
     },
     {
       "month": "2020-02",
       "buy": 3235.66,
-      "close": 2954.22
+      "close": 2954.22,
+      "adjBuy": 6571.68,
+      "adjClose": 6011.73
     },
     {
       "month": "2020-03",
       "buy": 2974.28,
-      "close": 2584.59
+      "close": 2584.59,
+      "adjBuy": 6052.69,
+      "adjClose": 5269.2
     },
     {
       "month": "2020-04",
       "buy": 2498.08,
-      "close": 2912.43
+      "close": 2912.43,
+      "adjBuy": 5092.85,
+      "adjClose": 5944.68
     },
     {
       "month": "2020-05",
       "buy": 2869.09,
-      "close": 3044.31
+      "close": 3044.31,
+      "adjBuy": 5856.87,
+      "adjClose": 6227.81
     },
     {
       "month": "2020-06",
       "buy": 3038.78,
-      "close": 3100.29
+      "close": 3100.29,
+      "adjBuy": 6216.8,
+      "adjClose": 6351.67
     },
     {
       "month": "2020-07",
       "buy": 3105.92,
-      "close": 3271.12
+      "close": 3271.12,
+      "adjBuy": 6363.41,
+      "adjClose": 6709.81
     },
     {
       "month": "2020-08",
       "buy": 3288.26,
-      "close": 3500.31
+      "close": 3500.31,
+      "adjBuy": 6745.17,
+      "adjClose": 7192.11
     },
     {
       "month": "2020-09",
       "buy": 3507.44,
-      "close": 3363
+      "close": 3363,
+      "adjBuy": 7206.9,
+      "adjClose": 6918.83
     },
     {
       "month": "2020-10",
       "buy": 3385.87,
-      "close": 3269.96
+      "close": 3269.96,
+      "adjBuy": 6966.63,
+      "adjClose": 6734.84
     },
     {
       "month": "2020-11",
       "buy": 3296.2,
-      "close": 3621.63
+      "close": 3621.63,
+      "adjBuy": 6788.96,
+      "adjClose": 7472.06
     },
     {
       "month": "2020-12",
       "buy": 3645.87,
-      "close": 3756.07
+      "close": 3756.07,
+      "adjBuy": 7522.3,
+      "adjClose": 7759.35
     },
     {
       "month": "2021-01",
       "buy": 3764.61,
-      "close": 3714.24
+      "close": 3714.24,
+      "adjBuy": 7777.41,
+      "adjClose": 7681.01
     },
     {
       "month": "2021-02",
       "buy": 3731.17,
-      "close": 3811.15
+      "close": 3811.15,
+      "adjBuy": 7716.04,
+      "adjClose": 7892.81
     },
     {
       "month": "2021-03",
       "buy": 3842.51,
-      "close": 3972.89
+      "close": 3972.89,
+      "adjBuy": 7957.96,
+      "adjClose": 8238.48
     },
     {
       "month": "2021-04",
       "buy": 3992.78,
-      "close": 4181.17
+      "close": 4181.17,
+      "adjBuy": 8279.75,
+      "adjClose": 8678.16
     },
     {
       "month": "2021-05",
       "buy": 4191.98,
-      "close": 4204.11
+      "close": 4204.11,
+      "adjBuy": 8700.62,
+      "adjClose": 8738.77
     },
     {
       "month": "2021-06",
       "buy": 4216.52,
-      "close": 4297.5
+      "close": 4297.5,
+      "adjBuy": 8764.83,
+      "adjClose": 8942.78
     },
     {
       "month": "2021-07",
       "buy": 4300.73,
-      "close": 4395.26
+      "close": 4395.26,
+      "adjBuy": 8950.11,
+      "adjClose": 9155.21
     },
     {
       "month": "2021-08",
       "buy": 4406.86,
-      "close": 4522.68
+      "close": 4522.68,
+      "adjBuy": 9179.4,
+      "adjClose": 9433.58
     },
     {
       "month": "2021-09",
       "buy": 4528.8,
-      "close": 4307.54
+      "close": 4307.54,
+      "adjBuy": 9446.98,
+      "adjClose": 8994.83
     },
     {
       "month": "2021-10",
       "buy": 4317.16,
-      "close": 4605.38
+      "close": 4605.38,
+      "adjBuy": 9014.98,
+      "adjClose": 9625.02
     },
     {
       "month": "2021-11",
       "buy": 4610.62,
-      "close": 4567
+      "close": 4567,
+      "adjBuy": 9636.06,
+      "adjClose": 9558.33
     },
     {
       "month": "2021-12",
       "buy": 4602.82,
-      "close": 4766.18
+      "close": 4766.18,
+      "adjBuy": 9634.11,
+      "adjClose": 9986.7
     },
     {
       "month": "2022-01",
       "buy": 4778.14,
-      "close": 4515.55
+      "close": 4515.55,
+      "adjBuy": 10011.81,
+      "adjClose": 9469.92
     },
     {
       "month": "2022-02",
       "buy": 4519.57,
-      "close": 4373.94
+      "close": 4373.94,
+      "adjBuy": 9478.4,
+      "adjClose": 9186.37
     },
     {
       "month": "2022-03",
       "buy": 4363.14,
-      "close": 4530.41
+      "close": 4530.41,
+      "adjBuy": 9163.93,
+      "adjClose": 9527.46
     },
     {
       "month": "2022-04",
       "buy": 4540.32,
-      "close": 4131.93
+      "close": 4131.93,
+      "adjBuy": 9548.31,
+      "adjClose": 8696.65
     },
     {
       "month": "2022-05",
       "buy": 4130.61,
-      "close": 4132.15
+      "close": 4132.15,
+      "adjBuy": 8693.93,
+      "adjClose": 8712.6
     },
     {
       "month": "2022-06",
       "buy": 4149.78,
-      "close": 3785.38
+      "close": 3785.38,
+      "adjBuy": 8749.5,
+      "adjClose": 7993.43
     },
     {
       "month": "2022-07",
       "buy": 3781,
-      "close": 4130.29
+      "close": 4130.29,
+      "adjBuy": 7984.46,
+      "adjClose": 8730.46
     },
     {
       "month": "2022-08",
       "buy": 4112.38,
-      "close": 3955
+      "close": 3955,
+      "adjBuy": 8690.26,
+      "adjClose": 8374.42
     },
     {
       "month": "2022-09",
       "buy": 3936.73,
-      "close": 3585.62
+      "close": 3585.62,
+      "adjBuy": 8336.93,
+      "adjClose": 7603.14
     },
     {
       "month": "2022-10",
       "buy": 3609.78,
-      "close": 3871.98
+      "close": 3871.98,
+      "adjBuy": 7655.14,
+      "adjClose": 8218.7
     },
     {
       "month": "2022-11",
       "buy": 3901.79,
-      "close": 4080.11
+      "close": 4080.11,
+      "adjBuy": 8279.94,
+      "adjClose": 8678
     },
     {
       "month": "2022-12",
       "buy": 4087.14,
-      "close": 3839.5
+      "close": 3839.5,
+      "adjBuy": 8693.84,
+      "adjClose": 8178.02
     },
     {
       "month": "2023-01",
       "buy": 3853.29,
-      "close": 4076.6
+      "close": 4076.6,
+      "adjBuy": 8207.69,
+      "adjClose": 8691.88
     },
     {
       "month": "2023-02",
       "buy": 4070.07,
-      "close": 3970.15
+      "close": 3970.15,
+      "adjBuy": 8678.01,
+      "adjClose": 8479.8
     },
     {
       "month": "2023-03",
       "buy": 3963.34,
-      "close": 4109.31
+      "close": 4109.31,
+      "adjBuy": 8465.77,
+      "adjClose": 8791.13
     },
     {
       "month": "2023-04",
       "buy": 4102.2,
-      "close": 4169.48
+      "close": 4169.48,
+      "adjBuy": 8775.93,
+      "adjClose": 8928.35
     },
     {
       "month": "2023-05",
       "buy": 4166.79,
-      "close": 4179.83
+      "close": 4179.83,
+      "adjBuy": 8922.62,
+      "adjClose": 8967.16
     },
     {
       "month": "2023-06",
       "buy": 4183.03,
-      "close": 4450.38
+      "close": 4450.38,
+      "adjBuy": 8975.67,
+      "adjClose": 9559.67
     },
     {
       "month": "2023-07",
       "buy": 4450.48,
-      "close": 4588.96
+      "close": 4588.96,
+      "adjBuy": 9560.37,
+      "adjClose": 9866.77
     },
     {
       "month": "2023-08",
       "buy": 4578.83,
-      "close": 4507.66
+      "close": 4507.66,
+      "adjBuy": 9845.22,
+      "adjClose": 9709.68
     },
     {
       "month": "2023-09",
       "buy": 4530.6,
-      "close": 4288.05
+      "close": 4288.05,
+      "adjBuy": 9759.6,
+      "adjClose": 9246.74
     },
     {
       "month": "2023-10",
       "buy": 4284.52,
-      "close": 4193.8
+      "close": 4193.8,
+      "adjBuy": 9239.16,
+      "adjClose": 9052.31
     },
     {
       "month": "2023-11",
       "buy": 4201.27,
-      "close": 4567.8
+      "close": 4567.8,
+      "adjBuy": 9068.49,
+      "adjClose": 9879.02
     },
     {
       "month": "2023-12",
       "buy": 4559.43,
-      "close": 4769.83
+      "close": 4769.83,
+      "adjBuy": 9861.75,
+      "adjClose": 10327.83
     },
     {
       "month": "2024-01",
       "buy": 4745.2,
-      "close": 4845.65
+      "close": 4845.65,
+      "adjBuy": 10274.81,
+      "adjClose": 10501.38
     },
     {
       "month": "2024-02",
       "buy": 4861.11,
-      "close": 5096.27
+      "close": 5096.27,
+      "adjBuy": 10535.43,
+      "adjClose": 11062.11
     },
     {
       "month": "2024-03",
       "buy": 5098.51,
-      "close": 5254.35
+      "close": 5254.35,
+      "adjBuy": 11067.61,
+      "adjClose": 11418.03
     },
     {
       "month": "2024-04",
       "buy": 5257.97,
-      "close": 5035.69
+      "close": 5035.69,
+      "adjBuy": 11425.92,
+      "adjClose": 10951.66
     },
     {
       "month": "2024-05",
       "buy": 5029.03,
-      "close": 5277.51
+      "close": 5277.51,
+      "adjBuy": 10937.26,
+      "adjClose": 11494.7
     },
     {
       "month": "2024-06",
       "buy": 5297.15,
-      "close": 5460.48
+      "close": 5460.48,
+      "adjBuy": 11538.85,
+      "adjClose": 11907.15
     },
     {
       "month": "2024-07",
       "buy": 5471.08,
-      "close": 5522.3
+      "close": 5522.3,
+      "adjBuy": 11930.63,
+      "adjClose": 12052.09
     },
     {
       "month": "2024-08",
       "buy": 5537.84,
-      "close": 5648.4
+      "close": 5648.4,
+      "adjBuy": 12086.49,
+      "adjClose": 12344.43
     },
     {
       "month": "2024-09",
       "buy": 5623.89,
-      "close": 5762.48
+      "close": 5762.48,
+      "adjBuy": 12292.1,
+      "adjClose": 12608.07
     },
     {
       "month": "2024-10",
       "buy": 5757.73,
-      "close": 5705.45
+      "close": 5705.45,
+      "adjBuy": 12598.03,
+      "adjClose": 12493.74
     },
     {
       "month": "2024-11",
       "buy": 5723.22,
-      "close": 6032.38
+      "close": 6032.38,
+      "adjBuy": 12533.19,
+      "adjClose": 13227.13
     },
     {
       "month": "2024-12",
       "buy": 6040.11,
-      "close": 5881.63
+      "close": 5881.63,
+      "adjBuy": 13245.66,
+      "adjClose": 12911.82
     },
     {
       "month": "2025-01",
       "buy": 5903.26,
-      "close": 6040.53
+      "close": 6040.53,
+      "adjBuy": 12959.78,
+      "adjClose": 13271.38
     },
     {
       "month": "2025-02",
       "buy": 5969.65,
-      "close": 5954.5
+      "close": 5954.5,
+      "adjBuy": 13116.48,
+      "adjClose": 13098.22
     },
     {
       "month": "2025-03",
       "buy": 5968.33,
-      "close": 5611.85
+      "close": 5611.85,
+      "adjBuy": 13129.87,
+      "adjClose": 12360.21
     },
     {
       "month": "2025-04",
       "buy": 5597.53,
-      "close": 5569.06
+      "close": 5569.06,
+      "adjBuy": 12328.97,
+      "adjClose": 12276.39
     },
     {
       "month": "2025-05",
       "buy": 5625.14,
-      "close": 5911.69
+      "close": 5911.69,
+      "adjBuy": 12400.17,
+      "adjClose": 13049.13
     },
     {
       "month": "2025-06",
       "buy": 5896.68,
-      "close": 6204.95
+      "close": 6204.95,
+      "adjBuy": 13017.59,
+      "adjClose": 13712.71
     },
     {
       "month": "2025-07",
       "buy": 6187.25,
-      "close": 6339.39
+      "close": 6339.39,
+      "adjBuy": 13673.9,
+      "adjClose": 14020.46
     },
     {
       "month": "2025-08",
       "buy": 6287.28,
-      "close": 6460.26
+      "close": 6460.26,
+      "adjBuy": 13905.81,
+      "adjClose": 14304.68
     },
     {
       "month": "2025-09",
       "buy": 6401.51,
-      "close": 6688.46
+      "close": 6688.46,
+      "adjBuy": 14177.43,
+      "adjClose": 14826.8
     },
     {
       "month": "2025-10",
       "buy": 6664.92,
-      "close": 6840.2
+      "close": 6840.2,
+      "adjBuy": 14775.36,
+      "adjClose": 15173.95
     },
     {
       "month": "2025-11",
       "buy": 6882.32,
-      "close": 6849.09
+      "close": 6849.09,
+      "adjBuy": 15268.33,
+      "adjClose": 15211.14
     },
     {
       "month": "2025-12",
       "buy": 6812.3,
-      "close": 6845.5
+      "close": 6845.5,
+      "adjBuy": 15131.28,
+      "adjClose": 15220.45
     },
     {
       "month": "2026-01",
       "buy": 6878.11,
-      "close": 6939.03
+      "close": 6939.03,
+      "adjBuy": 15296.48,
+      "adjClose": 15441.15
     },
     {
       "month": "2026-02",
       "buy": 6916.64,
-      "close": 6878.88
+      "close": 6878.88,
+      "adjBuy": 15392.03,
+      "adjClose": 15323.8
     },
     {
       "month": "2026-03",
       "buy": 6824.36,
-      "close": 6528.52
+      "close": 6528.52,
+      "adjBuy": 15203.62,
+      "adjClose": 14560.75
     },
     {
       "month": "2026-04",
       "buy": 6556.56,
-      "close": 7209.01
+      "close": 7209.01,
+      "adjBuy": 14623.85,
+      "adjClose": 16088.56
     },
     {
       "month": "2026-05",
       "buy": 7234.54,
-      "close": 7580.06
+      "close": 7580.06,
+      "adjBuy": 16145.9,
+      "adjClose": 16935.35
     },
     {
       "month": "2026-06",
       "buy": 7582.29,
-      "close": 7499.36
+      "close": 7499.36,
+      "adjBuy": 16941.61,
+      "adjClose": 16774.07
     },
     {
       "month": "2026-07",
       "buy": 7478.84,
-      "close": 7489.72
+      "close": 7489.72,
+      "adjBuy": 16728.72,
+      "adjClose": 16763.42
     },
     {
       "month": "2026-08",
       "buy": 7504.78,
-      "close": 7686.14
+      "close": 7686.14,
+      "adjBuy": 16798.14,
+      "adjClose": 17219.94
     },
     {
       "month": "2026-09",
       "buy": 7635.47,
-      "close": 7651.54
+      "close": 7651.54,
+      "adjBuy": 17107.98,
+      "adjClose": 17160.41
     },
     {
       "month": "2026-10",
       "buy": 7666.47,
-      "close": 7580.07
+      "close": 7580.07,
+      "adjBuy": 17194.28,
+      "adjClose": 17011.14
     }
   ]
 }
