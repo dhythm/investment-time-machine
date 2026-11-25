@@ -1,10 +1,13 @@
 export type FxMode = 'neutral' | 'jpy'
+export type PriceBasis = 'price' | 'adjusted'
 export const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value))
 
 export interface MonthlyPoint {
   month: string
   buy: number | null
   close: number
+  adjBuy?: number | null
+  adjClose?: number | null
 }
 
 export interface IndexDataset {

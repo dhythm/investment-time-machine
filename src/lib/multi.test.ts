@@ -18,7 +18,8 @@ describe('simulateAll', () => {
     for (const { startMonth, result } of entries) {
       expect(startMonth).toBe(alignedStartMonth)
       expect(result.points[0].month).toBe(startMonth)
-      expect(result.summary).toMatchObject({ months: 2, totalPrincipal: 200 })
+      expect(result.summary.months).toBe(2)
+      expect(result.summary.totalPrincipal).toBeCloseTo(200 / 3)
     }
   })
   it('uses the requested January when all indices already have data', () => {
@@ -36,24 +37,48 @@ describe('simulateAll', () => {
   it('applies FX only to USD indices', () => {
     const { entries: neutral } = simulateAll([usd, jpy], options)
     const { entries: converted } = simulateAll([usd, jpy], { ...options, fxMode: 'jpy' })
-    expect(neutral[0].result.summary.finalValue).toBe(200)
-    expect(converted[0].result.summary.finalValue).toBe(300)
+    expect(neutral[0].result.summary.finalValue).toBe(100)
+    expect(converted[0].result.summary.finalValue).toBe(150)
     expect(converted[1]).toEqual(neutral[1])
+  })
+
+  it('normalizes allocations and divides one contribution budget', () => {
+    for (const [allocations, weights] of [[{ usd: 60, jpy: 40 }, [0.6, 0.4]], [{ usd: 50, jpy: 25 }, [2 / 3, 1 / 3]],
+      [{ usd: 0, jpy: 0 }, [0.5, 0.5]], [null, [0.5, 0.5]]] as const) {
+      const { entries } = simulateAll([usd, jpy], { ...options, allocations })
+      expect(entries.map(entry => entry.weight)).toEqual(weights)
+      entries.forEach((entry, index) => expect(entry.result.summary.totalPrincipal).toBeCloseTo(200 * weights[index]))
+    }
+  })
+
+  it('splits withdrawals using the same weights as contributions', () => {
+    const months = ['2000-12', ...Array.from({ length: 12 }, (_, index) => `2001-${String(index + 1).padStart(2, '0')}`)]
+    const { entries } = simulateAll(['first', 'second'].map(id => fixture(id, 'JPY', months)), { ...options,
+      allocations: { first: 60, second: 40 }, withdrawal: { years: 1, monthlyAmount: 5 } })
+    expect(entries.map(entry => entry.result.summary.totalWithdrawn)).toEqual([36, 24])
+    expect(entries[0].result.summary.withdrawalStartMonth).toBe('2001-01')
+  })
+
+  it('aligns the price-only fallback to the first available adjusted month', () => {
+    const adjusted = { ...usd, points: usd.points.map(point => ({ ...point, adjBuy: point.month === '2001-03' ? 5 : null, adjClose: 5 })) }
+    const { entries, alignedStartMonth } = simulateAll([adjusted, jpy], { ...options, basis: 'adjusted' })
+    expect(alignedStartMonth).toBe('2001-03')
+    expect(entries.map(entry => entry.result.points[0].month)).toEqual([alignedStartMonth, alignedStartMonth])
   })
 })
 
 describe('mergeSeries', () => {
-  it('merges months in order, omits missing keys and carries the longest principal forward', () => {
+  it('merges months in order, omits missing keys and sums principals across series', () => {
     const sparse = fixture('usd', 'USD', ['2000-12', '2001-01', '2001-03'])
     expect(mergeSeries([jpy, sparse].flatMap(dataset => simulateAll([dataset], options).entries))).toEqual([
       { month: '2000-12', principal: 100, usd: 100, usdLump: 300 },
       { month: '2001-01', principal: 200, usd: 200, usdLump: 300 },
-      { month: '2001-02', principal: 200, jpy: 100, jpyLump: 200 },
-      { month: '2001-03', principal: 300, usd: 300, usdLump: 300, jpy: 200, jpyLump: 200 },
+      { month: '2001-02', principal: 300, jpy: 100, jpyLump: 200 },
+      { month: '2001-03', principal: 500, usd: 300, usdLump: 300, jpy: 200, jpyLump: 200 },
     ])
   })
-  it('uses zero before the first principal of the longest series', () => {
+  it('counts a series principal from its own first month when summing', () => {
     const earlier = fixture('earlier', 'JPY', ['1999-01'])
-    expect(mergeSeries([earlier, usd].flatMap(dataset => simulateAll([dataset], options).entries))[0].principal).toBe(0)
+    expect(mergeSeries([earlier, usd].flatMap(dataset => simulateAll([dataset], options).entries))[0].principal).toBe(100)
   })
 })

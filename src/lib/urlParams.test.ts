@@ -2,9 +2,25 @@ import { describe, expect, it } from 'vitest'
 import { datasets } from '../data'
 import { buildParams, parseParams, type Params } from './urlParams'
 
-const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'jpy', lump: false }
+const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'jpy', lump: false,
+  basis: 'price', allocations: null, withdrawalYears: 0, withdrawalAmount: 100000 }
 
 describe('URL parameters', () => {
+  it('pairs shares in incoming idx order and round-trips all new parameters', () => {
+    const params = parseParams('?idx=nikkei225,sp500&alloc=39.125,60.1&div=1&wy=10&wa=50000')
+    expect(params).toEqual({ ...defaults, indexIds: ['sp500', 'nikkei225'], allocations: { nikkei225: 39.125, sp500: 60.1 }, basis: 'adjusted', withdrawalYears: 10, withdrawalAmount: 50000 })
+    const query = buildParams(params)
+    expect(new URLSearchParams(query).get('alloc')).toBe('60.1,39.13')
+    expect(parseParams(query)).toEqual({ ...params, allocations: { sp500: 60.1, nikkei225: 39.13 } })
+  })
+  it.each(['60', '-5,105', '0,0', '50,', 'Infinity,1', 'x,1'])('ignores invalid allocation %s', alloc => {
+    expect(parseParams(`?idx=sp500,nikkei225&alloc=${alloc}`).allocations).toBeNull()
+  })
+  it('clamps withdrawal settings and omits disabled options', () => {
+    expect(parseParams('?wy=51&wa=-1')).toMatchObject({ withdrawalYears: 50, withdrawalAmount: 0 })
+    expect(parseParams('?wy=1.2&wa=10000001')).toMatchObject({ withdrawalYears: 0, withdrawalAmount: 10000000 })
+    expect(buildParams(defaults)).toBe('?idx=sp500&from=2000&amt=30000')
+  })
   it('round-trips a shareable query', () => {
     const params = { ...defaults, indexIds: ['sp500', 'nikkei225'], startYear: 1999, monthlyAmount: 54321 }
     expect(buildParams(params)).toBe('?idx=sp500%2Cnikkei225&from=1999&amt=54321')
