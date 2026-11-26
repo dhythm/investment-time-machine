@@ -21,6 +21,49 @@ describe('simulate', () => {
     { month: '2001-03', buy: 10, close: 5 },
   ]
 
+  it('discounts each contribution at purchase and each balance at valuation', () => {
+    const months = [...Array.from({ length: 12 }, (_, index) => `2001-${String(index + 1).padStart(2, '0')}`), '2002-01']
+    const flat = { ...dataset, points: months.map(month => ({ month, buy: 10, close: 10 })) }
+    const { points, summary } = simulate(flat, { ...options, inflationRate: 0.12 })
+    let principal = 0
+    points.forEach((point, index) => {
+      const divisor = 1.12 ** (index / 12)
+      principal += 100 / divisor
+      expect(point.principal).toBeCloseTo(principal)
+      expect(point.value).toBeCloseTo(100 * (index + 1) / divisor)
+      expect(point.lumpValue).toBeCloseTo(1300 / divisor)
+      expect(point.units).toBe(10 * (index + 1))
+    })
+    expect(summary.totalPrincipal).toBeCloseTo(principal)
+    expect(summary.finalValue).toBeCloseTo(1300 / 1.12)
+    expect(summary.lumpFinalValue).toBe(summary.finalValue)
+    expect(summary.gain).toBeCloseTo(1300 / 1.12 - principal)
+    expect(summary.gainRate).toBeCloseTo((1300 / 1.12 - principal) / principal)
+  })
+
+  it('discounts after-tax balances and drawdown without changing nominal trades', () => {
+    const settings = { ...options, tax: true }
+    const nominal = simulate(dataset, settings)
+    const real = simulate(dataset, { ...settings, inflationRate: 0.12 })
+    real.points.forEach((point, index) => {
+      expect(point.units).toBe(nominal.points[index].units)
+      expect(point.value).toBeCloseTo(nominal.points[index].value / 1.12 ** (index / 12))
+      expect(point.lumpValue).toBeCloseTo(nominal.points[index].lumpValue / 1.12 ** (index / 12))
+    })
+    expect(real.summary.maxDrawdownRate).toBeCloseTo(1 - real.points[1].value / real.points[0].value)
+    expect(simulate(dataset, { ...settings, inflationRate: 0 })).toEqual(nominal)
+  })
+
+  it('discounts net withdrawals and tax in the month of each sale', () => {
+    const rising = { ...dataset, points: dataset.points.map(({ month }, index) => ({ month, buy: 10 * 2 ** index, close: 10 * 2 ** index })) }
+    const { summary } = simulate(rising, { ...options, startYear: 2000, tax: true, inflationRate: 0.12, withdrawal: { months: 2, monthlyAmount: 500 } })
+    const firstTax = 500 * (1 - 200 / 600) * 0.20315
+    const lastTax = (200 - 200 / 6) * 0.20315
+    expect(summary.totalTaxPaid).toBeCloseTo(firstTax / 1.12 ** (2 / 12) + lastTax / 1.12 ** (3 / 12))
+    expect(summary.totalWithdrawn).toBeCloseTo((500 - firstTax) / 1.12 ** (2 / 12) + (200 - lastTax) / 1.12 ** (3 / 12))
+    expect(summary.depletedMonth).toBe('2001-03')
+  })
+
   it('uses the specified start month for both year validation and the first purchase', () => {
     const result = simulate(dataset, { ...options, startYear: 1999, startMonth: '2001-02' })
     expect(result.points).toEqual([

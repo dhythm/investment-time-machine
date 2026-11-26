@@ -3,9 +3,25 @@ import { datasets } from '../data'
 import { buildParams, buildScenarioB, parseParams, parseScenario, parseScenarioB, type Params } from './urlParams'
 
 const defaults: Params = { indexIds: ['sp500'], startYear: 2000, monthlyAmount: 30000, fxMode: 'jpy', lump: false,
-  basis: 'price', allocations: null, withdrawalYears: 0, withdrawalAmount: 100000, tax: false, feeRate: 0, frequency: 'monthly' }
+  basis: 'price', allocations: null, withdrawalYears: 0, withdrawalAmount: 100000, tax: false, feeRate: 0, frequency: 'monthly', inflation: false, inflationRate: 2 }
 
 describe('URL parameters', () => {
+  it.each(['inf=1', 'inf=1&irate=0', 'inf=1&irate=3.5', 'irate=10'])('round-trips inflation settings: %s', extras => {
+    const query = `?idx=sp500&from=2000&amt=30000&${extras}`
+    const params = parseParams(query)
+    expect(params.inflation).toBe(extras.includes('inf=1'))
+    expect(buildParams(params)).toBe(query)
+  })
+  it.each(['Infinity', 'NaN', 'none', '-0.1', '10.01', '', ' '])('defaults invalid irate=%s and ignores unknown flags', rate => {
+    expect(parseParams(`?inf=true&irate=${rate}`)).toEqual(defaults)
+  })
+  it('round-trips scenario B inflation independently of A', () => {
+    const scenario = { ...defaults, inflation: true, inflationRate: 4.1 }
+    const query = `?cmp=1&${buildScenarioB(scenario)}`
+    expect(query).toContain('&binf=1&birate=4.1')
+    expect(parseScenarioB(query)).toEqual(scenario)
+    expect(parseParams(query)).toEqual(defaults)
+  })
   it.each(['2', 'y'])('round-trips tax, decimal percent fees and freq=%s', freq => {
     const params = parseParams(`?tax=1&fee=0.101&freq=${freq}`)
     expect(params).toMatchObject({ tax: true, feeRate: 0.101, frequency: freq === '2' ? 'bimonthly' : 'yearly' })

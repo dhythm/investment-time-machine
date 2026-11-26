@@ -2,10 +2,10 @@ import { basisPoints, simulate } from './simulate'
 import { clamp, yearRange, type ContributionFrequency, type FxMode, type IndexDataset, type MonthlyPoint, type PriceBasis } from './types'
 
 interface MultiOptions { startYear: number; monthlyAmount: number; fxMode: FxMode; fxPoints: MonthlyPoint[]; basis?: PriceBasis;
-  tax?: boolean; feeRate?: number; frequency?: ContributionFrequency;
+  tax?: boolean; feeRate?: number; inflationRate?: number; frequency?: ContributionFrequency;
   allocations?: Record<string, number> | null; withdrawal?: { years: number; monthlyAmount: number } }
 
-export function simulateAll(selected: IndexDataset[], { startYear, monthlyAmount, fxMode, fxPoints, basis, allocations, withdrawal, tax, feeRate, frequency }: MultiOptions) {
+export function simulateAll(selected: IndexDataset[], { startYear, monthlyAmount, fxMode, fxPoints, basis, allocations, withdrawal, tax, feeRate, inflationRate, frequency }: MultiOptions) {
   const prepared = selected.map(dataset => ({ ...dataset, points: basisPoints(dataset, basis) }))
   const amounts = selected.map(({ id }) => Math.max(0, allocations?.[id] ?? 0))
   const largest = Math.max(0, ...amounts)
@@ -18,7 +18,7 @@ export function simulateAll(selected: IndexDataset[], { startYear, monthlyAmount
     const weight = total > 0 ? shares[index] / total : 1 / selected.length
     const effectiveStartYear = alignedStartMonth ? Number(alignedStartMonth.slice(0, 4)) : clamp(startYear, ...yearRange(prepared[index]))
     const fx = dataset.currency === 'USD' && fxMode === 'jpy' ? { mode: fxMode, points: fxPoints } : undefined
-    const result = simulate(prepared[index], { startYear: effectiveStartYear, startMonth: alignedStartMonth ?? undefined, monthlyAmount: monthlyAmount * weight, fx, tax, feeRate, frequency,
+    const result = simulate(prepared[index], { startYear: effectiveStartYear, startMonth: alignedStartMonth ?? undefined, monthlyAmount: monthlyAmount * weight, fx, tax, feeRate, inflationRate, frequency,
       withdrawal: withdrawal && { months: withdrawal.years * 12, monthlyAmount: withdrawal.monthlyAmount * weight } })
     return { dataset, weight, effectiveStartYear, startMonth: alignedStartMonth ?? result.points[0]?.month ?? null, result }
   })

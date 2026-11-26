@@ -12,6 +12,12 @@ const jpy = fixture('jpy', 'JPY', ['2001-02', '2001-03'])
 const options = { startYear: 1999, monthlyAmount: 100, fxMode: 'neutral', fxPoints: usd.points.map(({ month }) => ({ month, buy: 2, close: 3 })) } as const
 
 describe('simulateAll', () => {
+  it('discounts every index from the aligned simulation start', () => {
+    for (const { result } of simulateAll([usd, jpy], { ...options, inflationRate: 0.12 }).entries) {
+      expect(result.points[0]).toMatchObject({ month: '2001-02', principal: 50, value: 50 })
+      expect(result.summary.finalValue).toBeCloseTo(100 / 1.12 ** (1 / 12))
+    }
+  })
   it('forwards taxes, fees and frequency to every index', () => {
     const settings = { tax: true, feeRate: 0.12, frequency: 'bimonthly' } as const
     const selected = [usd, jpy].map(dataset => ({ ...dataset, points: dataset.points.map(point => ({ ...point, close: 20 })) }))

@@ -16,6 +16,7 @@ interface Options {
   basis?: PriceBasis
   tax?: boolean
   feeRate?: number
+  inflationRate?: number
   frequency?: ContributionFrequency
   withdrawal?: { months: number; monthlyAmount: number }
 }
@@ -25,7 +26,7 @@ export function basisPoints(dataset: IndexDataset, basis?: PriceBasis): MonthlyP
   return dataset.points.flatMap(({ month, adjBuy, adjClose }) => adjBuy != null && adjClose != null ? [{ month, buy: adjBuy, close: adjClose }] : [])
 }
 
-export function simulate(dataset: IndexDataset, { startYear, startMonth, monthlyAmount, fx, basis, withdrawal, tax = false, feeRate = 0, frequency = 'monthly' }: Options) {
+export function simulate(dataset: IndexDataset, { startYear, startMonth, monthlyAmount, fx, basis, withdrawal, tax = false, feeRate = 0, inflationRate = 0, frequency = 'monthly' }: Options) {
   const points: SimulationPoint[] = []
   const summary = { months: 0, totalPrincipal: 0, finalValue: 0, lumpFinalValue: 0, gain: 0, gainRate: 0, maxDrawdownRate: 0,
     totalWithdrawn: 0, totalTaxPaid: 0, depletedMonth: null as string | null, withdrawalStartMonth: null as string | null }
@@ -55,7 +56,9 @@ export function simulate(dataset: IndexDataset, { startYear, startMonth, monthly
   let lumpBasis = totalPrincipal
   const gainTax = (amount: number, cost: number) => tax ? TAX_RATE * Math.max(0, amount - cost) : 0
   let peak = 0
+  let realPrincipal = 0
   for (const [index, { month, buy, close }] of prices.entries()) {
+    const factor = inflationRate > 0 ? (1 + inflationRate) ** (-index / 12) : 1
     if (withdrawal && index >= withdrawalIndex) {
       const price = buy ?? close
       const available = units * price
@@ -70,13 +73,13 @@ export function simulate(dataset: IndexDataset, { startYear, startMonth, monthly
         lumpBasis = soldUnits >= lumpUnits ? 0 : lumpBasis * (1 - soldUnits / lumpUnits)
         lumpUnits = Math.max(0, lumpUnits - soldUnits)
       }
-      summary.totalWithdrawn += sold - saleTax
-      summary.totalTaxPaid += saleTax
+      summary.totalWithdrawn += (sold - saleTax) * factor
+      summary.totalTaxPaid += saleTax * factor
       if (withdrawal.monthlyAmount - sold > Number.EPSILON * withdrawal.monthlyAmount * 8) summary.depletedMonth ??= month
     } else if (contributions[index] > 0 && buy !== null) {
       units += contributions[index] / buy
       costBasis += contributions[index]
-      summary.totalPrincipal += contributions[index]
+      realPrincipal += contributions[index] * factor
       summary.months++
     }
     if (feeRate > 0) {
@@ -84,15 +87,16 @@ export function simulate(dataset: IndexDataset, { startYear, startMonth, monthly
       lumpUnits *= 1 - feeRate / 12
     }
     const rawValue = units * close
-    const value = rawValue - gainTax(rawValue, costBasis)
+    const value = (rawValue - gainTax(rawValue, costBasis)) * factor
     peak = Math.max(peak, value)
     if (peak > 0) summary.maxDrawdownRate = Math.max(summary.maxDrawdownRate, (peak - value) / peak)
     const rawLumpValue = lumpUnits * close
-    const lumpValue = rawLumpValue - gainTax(rawLumpValue, lumpBasis)
-    points.push({ month, principal: summary.totalPrincipal, value, units, lumpValue })
+    const lumpValue = (rawLumpValue - gainTax(rawLumpValue, lumpBasis)) * factor
+    points.push({ month, principal: realPrincipal, value, units, lumpValue })
     summary.finalValue = value
     summary.lumpFinalValue = lumpValue
   }
+  summary.totalPrincipal = realPrincipal
   summary.gain = summary.finalValue - summary.totalPrincipal
   summary.gainRate = summary.totalPrincipal ? summary.gain / summary.totalPrincipal : 0
   return { points, summary }

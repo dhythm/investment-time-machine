@@ -87,6 +87,11 @@ function ScenarioControls({ params, onChange }: { params: Params; onChange: (nex
       <fieldset><legend>積立頻度</legend>{([['monthly', '毎月'], ['bimonthly', '隔月'], ['yearly', '年1回']] as const).map(([frequency, label]) => <label key={frequency}><input type="radio" name={`${group}-frequency`} checked={params.frequency === frequency} onChange={() => onChange({ ...params, frequency })}/>{label}</label>)}
         <p>年間の積立総額は同じで、1回あたりの金額が変わります</p></fieldset>
       <label><input type="checkbox" checked={params.tax} onChange={event => onChange({ ...params, tax: event.target.checked })}/>税金を反映する（特定口座 20.315%）</label>
+      <fieldset><legend>インフレ調整</legend>
+        <label><input type="checkbox" checked={params.inflation} onChange={event => onChange({ ...params, inflation: event.target.checked })}/>インフレ調整する（実質価値で表示）</label>
+        <label>想定インフレ率（年率 %）<input type="number" min="0" max="10" step="0.1" disabled={!params.inflation} value={params.inflationRate} onChange={event => onChange({ ...params, inflationRate: clamp(Math.round(Number(event.target.value) * 10) / 10, 0, 10) })}/></label>
+        <p>デフォルトは年率2%。開始時点の購買力にそろえて表示します</p>
+      </fieldset>
       <label><input type="checkbox" checked={lump} onChange={event => onChange({ ...params, lump: event.target.checked })}/>一括投資と比較する</label>
     </div>
   </>
@@ -95,6 +100,7 @@ function ScenarioControls({ params, onChange }: { params: Params; onChange: (nex
 function runScenario(params: Params) {
   const selected = datasets.filter(dataset => params.indexIds.includes(dataset.id))
   const simulation = simulateAll(selected, { ...params, fxPoints: fxDataset.points, feeRate: params.feeRate / 100,
+    inflationRate: params.inflation ? params.inflationRate / 100 : 0,
     withdrawal: { years: params.withdrawalYears, monthlyAmount: params.withdrawalAmount } })
   return { ...simulation, selected }
 }
@@ -107,6 +113,13 @@ function sumSummary(entries: SimulationEntry[], metric: 'totalWithdrawn' | 'tota
 
 function depletionNotes(entries: SimulationEntry[]) {
   return entries.flatMap(({ dataset, result }) => result.summary.depletedMonth ? [`${dataset.name}は${monthLabel(result.summary.depletedMonth)}に資産が尽きました`] : [])
+}
+
+function ResultNotes({ params, prefix = '' }: { params: Params; prefix?: string }) {
+  return <>
+    {params.tax && <p>{prefix}評価額は税引き後（概算）です</p>}
+    {params.inflation && <p>{prefix}金額はインフレ調整後の実質価値です（開始時点の購買力に換算し、年率{params.inflationRate}%で割り引いています）</p>}
+  </>
 }
 
 function SingleResults({ scenario, params }: { scenario: Scenario; params: Params }) {
@@ -122,7 +135,7 @@ function SingleResults({ scenario, params }: { scenario: Scenario; params: Param
   const period = lastPoint ? `${monthLabel(points[0].month)} 〜 ${monthLabel(lastPoint.month)}` : '対象データなし'
 
   return <>
-    {params.tax && <p>評価額は税引き後（概算）です</p>}
+    <ResultNotes params={params}/>
     {alignedStartMonth && alignedStartMonth > `${startYear}-01` && <p>比較のため、全指数のデータが揃う {monthLabel(alignedStartMonth)} 開始に揃えています（指定開始年は {startYear} 年）</p>}
     {entries.length === 1 ? <div className="cards">
       <article className="featured"><h3>最終評価額</h3><strong>{yen(summary.finalValue)}</strong><p>{lastPoint ? `${monthLabel(lastPoint.month)}時点` : '対象データなし'}</p></article>
@@ -206,8 +219,8 @@ function App() {
       </section>
       <section><div className="result-heading"><h2><small>02</small>シミュレーション結果</h2><div className="share"><span role="status">{notice.query === query && notice.text}</span><button onClick={copyLink}>リンクをコピー</button></div></div>
         {second ? <>
-          {params.tax && <p>シナリオA：評価額は税引き後（概算）です</p>}
-          {paramsB.tax && <p>シナリオB：評価額は税引き後（概算）です</p>}
+          <ResultNotes params={params} prefix="シナリオA："/>
+          <ResultNotes params={paramsB} prefix="シナリオB："/>
           <ScenarioComparison first={first} second={second}/>
         </> : <SingleResults scenario={first} params={params}/>}
       </section>
@@ -220,6 +233,7 @@ function App() {
         <li>各月の月初（最初の営業日）の始値で購入し、月末の終値で評価します。</li><li>価格のみの場合は配当・分配金を含みません。売買手数料は含みません。</li>
         <li>税金は特定口座の税率20.315%を利益分に適用した概算です。取り崩し時に利益分へ課税し、評価額はその時点で全て売却した場合の税引き後で表示します。信託報酬は指定した年率を毎月、口数から差し引いて計算します</li>
         <li>積立頻度を変えても年間の積立総額は同じです（隔月は2か月分、年1回は12か月分を、期間の開始月を起点に投入します）</li>
+        <li>インフレ調整をオンにすると、名目値を開始時点の購買力に換算した実質価値で表示します。各時点の金額を、開始から経過した年数分だけ想定インフレ率（デフォルト年率2%）で割り引いて計算します</li>
         <li>配当込みは調整後終値で計算しています（S&P 500は配当込み指数 ^SP500TR を使用）。日経平均は配当込みデータがないため、配当込みモードでも価格ベースで計算します</li>
         <li>複数の指数を比較するときは、指定開始年の1月以降で、選択した全指数のデータが揃う最初の月から積み立てます。単一の指数では、指定開始年の1月よりデータ開始が遅い場合、その指数のデータ開始月から積み立てます。</li>
         <li>為替換算は米ドル建て指数にのみ適用します。円建てモードでは月初のドル円レートで購入し、月末のレートで評価します。為替中立モードでは為替変動を考慮しません。</li>
